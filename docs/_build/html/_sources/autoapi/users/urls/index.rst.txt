@@ -1,0 +1,22 @@
+users.urls
+==========
+
+.. py:module:: users.urls
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   users.urls.router
+   users.urls.urlpatterns
+
+
+Module Contents
+---------------
+
+.. py:data:: router
+
+.. py:data:: urlpatterns
+

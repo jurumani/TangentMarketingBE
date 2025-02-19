@@ -1,0 +1,22 @@
+core.urls
+=========
+
+.. py:module:: core.urls
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   core.urls.schema_view
+   core.urls.urlpatterns
+
+
+Module Contents
+---------------
+
+.. py:data:: schema_view
+
+.. py:data:: urlpatterns
+

@@ -1,0 +1,91 @@
+messaging.views
+===============
+
+.. py:module:: messaging.views
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   messaging.views.MessageViewSet
+
+
+Module Contents
+---------------
+
+.. py:class:: MessageViewSet(**kwargs)
+
+   Bases: :py:obj:`rest_framework.viewsets.ModelViewSet`
+
+
+   A viewset that provides default `create()`, `retrieve()`, `update()`,
+   `partial_update()`, `destroy()` and `list()` actions.
+
+
+   .. py:attribute:: serializer_class
+
+
+   .. py:attribute:: permission_classes
+
+
+   .. py:method:: get_queryset()
+
+      This ensures that only the messages where the logged-in user is either the recipient or the sender are returned.
+
+
+
+   .. py:attribute:: sent_param
+
+
+   .. py:attribute:: received_param
+
+
+   .. py:method:: list(request, *args, **kwargs)
+
+      List messages for the logged-in user.
+      Use query params to filter sent, received, or unread messages.
+
+
+
+   .. py:method:: create(request, *args, **kwargs)
+
+      Create a new message for the logged-in user.
+      Automatically sets the sender to the authenticated user unless it's a system message.
+
+
+
+   .. py:method:: retrieve(request, *args, **kwargs)
+
+      Retrieve a message by its ID.
+
+
+
+   .. py:method:: update(request, *args, **kwargs)
+
+      Update a message by its ID.
+
+
+
+   .. py:method:: partial_update(request, *args, **kwargs)
+
+      Partially update a message by its ID.
+
+
+
+   .. py:method:: destroy(request, *args, **kwargs)
+
+      Delete a message by its ID.
+
+
+
+   .. py:method:: trigger_action(request, pk=None)
+
+
+   .. py:method:: mark_as_read(request, pk=None)
+
+      Mark a message as read.
+
+
+

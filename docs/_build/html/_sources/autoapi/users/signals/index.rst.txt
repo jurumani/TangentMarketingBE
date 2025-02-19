@@ -1,0 +1,32 @@
+users.signals
+=============
+
+.. py:module:: users.signals
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   users.signals.User
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   users.signals.create_user_profile
+   users.signals.save_user_profile
+
+
+Module Contents
+---------------
+
+.. py:data:: User
+
+.. py:function:: create_user_profile(sender, instance, created, **kwargs)
+
+.. py:function:: save_user_profile(sender, instance, **kwargs)
+

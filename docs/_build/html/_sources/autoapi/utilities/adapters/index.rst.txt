@@ -1,0 +1,38 @@
+utilities.adapters
+==================
+
+.. py:module:: utilities.adapters
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   utilities.adapters.CustomAccountAdapter
+
+
+Module Contents
+---------------
+
+.. py:class:: CustomAccountAdapter(request=None)
+
+   Bases: :py:obj:`allauth.account.adapter.DefaultAccountAdapter`
+
+
+   The adapter class allows you to override various functionality of the
+   ``allauth.account`` app.  To do so, point ``settings.ACCOUNT_ADAPTER`` to
+   your own class that derives from ``DefaultAccountAdapter`` and override the
+   behavior by altering the implementation of the methods according to your own
+   needs.
+
+
+   .. py:method:: send_confirmation_mail(request, emailconfirmation, signup)
+
+
+   .. py:method:: send_mail(template_prefix, email, context)
+
+
+   .. py:method:: get_password_reset_redirect_url(request)
+
+

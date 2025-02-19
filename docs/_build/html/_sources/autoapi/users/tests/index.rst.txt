@@ -1,0 +1,6 @@
+users.tests
+===========
+
+.. py:module:: users.tests
+
+

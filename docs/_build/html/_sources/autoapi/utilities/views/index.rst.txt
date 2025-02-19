@@ -1,0 +1,22 @@
+utilities.views
+===============
+
+.. py:module:: utilities.views
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   utilities.views.get_csrf_token
+   utilities.views.verify_email
+
+
+Module Contents
+---------------
+
+.. py:function:: get_csrf_token(request)
+
+.. py:function:: verify_email(request)
+

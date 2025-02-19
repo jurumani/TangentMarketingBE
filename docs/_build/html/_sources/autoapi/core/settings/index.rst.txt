@@ -1,0 +1,274 @@
+core.settings
+=============
+
+.. py:module:: core.settings
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   core.settings.BASE_DIR
+   core.settings.ENVIRONMENT
+   core.settings.env_file
+   core.settings.DEBUG
+   core.settings.SECRET_KEY
+   core.settings.ALLOWED_HOSTS
+   core.settings.FRONTEND_URL
+   core.settings.CORS_ALLOWED_ORIGINS
+   core.settings.CORS_ALLOW_CREDENTIALS
+   core.settings.SITE_ID
+   core.settings.INSTALLED_APPS
+   core.settings.MIDDLEWARE
+   core.settings.AUTHENTICATION_BACKENDS
+   core.settings.ROOT_URLCONF
+   core.settings.TEMPLATES
+   core.settings.WSGI_APPLICATION
+   core.settings.DATABASES
+   core.settings.AUTH_PASSWORD_VALIDATORS
+   core.settings.LANGUAGE_CODE
+   core.settings.TIME_ZONE
+   core.settings.USE_I18N
+   core.settings.USE_TZ
+   core.settings.STATIC_URL
+   core.settings.DEFAULT_AUTO_FIELD
+   core.settings.REST_FRAMEWORK
+   core.settings.CSRF_COOKIE_SECURE
+   core.settings.CSRF_COOKIE_HTTPONLY
+   core.settings.CSRF_COOKIE_SAMESITE
+   core.settings.HEADLESS_ONLY
+   core.settings.ACCOUNT_AUTHENTICATION_METHOD
+   core.settings.ACCOUNT_EMAIL_VERIFICATION
+   core.settings.ACCOUNT_EMAIL_REQUIRED
+   core.settings.ACCOUNT_CONFIRM_EMAIL_ON_GET
+   core.settings.ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS
+   core.settings.ACCOUNT_UNIQUE_EMAIL
+   core.settings.REST_AUTH_REGISTER_SERIALIZER
+   core.settings.ACCOUNT_SIGNUP_REDIRECT_URL
+   core.settings.ACCOUNT_SIGNUP_FORM_CLASS
+   core.settings.ACCOUNT_ADAPTER
+   core.settings.HEADLESS_FRONTEND_URLS
+   core.settings.EMAIL_BACKEND
+   core.settings.EMAIL_HOST
+   core.settings.EMAIL_PORT
+   core.settings.EMAIL_USE_TLS
+   core.settings.EMAIL_HOST_USER
+   core.settings.EMAIL_HOST_PASSWORD
+   core.settings.DEFAULT_FROM_EMAIL
+   core.settings.MEDIA_URL
+   core.settings.MEDIA_ROOT
+   core.settings.SITE_NAME
+   core.settings.CELERY_BROKER_URL
+   core.settings.CELERY_ACCEPT_CONTENT
+   core.settings.CELERY_TASK_SERIALIZER
+   core.settings.CELERY_RESULT_BACKEND
+   core.settings.CELERY_CACHE_BACKEND
+   core.settings.CELERY_BEAT_SCHEDULER
+
+
+Module Contents
+---------------
+
+.. py:data:: BASE_DIR
+
+.. py:data:: ENVIRONMENT
+   :value: 'development'
+
+
+.. py:data:: env_file
+
+.. py:data:: DEBUG
+
+.. py:data:: SECRET_KEY
+
+.. py:data:: ALLOWED_HOSTS
+   :value: ['c5ea-169-0-26-81.ngrok-free.app', '127.0.0.1', '192.168.8.213']
+
+
+.. py:data:: FRONTEND_URL
+
+.. py:data:: CORS_ALLOWED_ORIGINS
+   :value: ['http://localhost:8100', 'http://localhost']
+
+
+.. py:data:: CORS_ALLOW_CREDENTIALS
+   :value: True
+
+
+.. py:data:: SITE_ID
+   :value: 1
+
+
+.. py:data:: INSTALLED_APPS
+   :value: ['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',...
+
+
+.. py:data:: MIDDLEWARE
+   :value: ['corsheaders.middleware.CorsMiddleware', 'django.middleware.security.SecurityMiddleware',...
+
+
+.. py:data:: AUTHENTICATION_BACKENDS
+   :value: ['django.contrib.auth.backends.ModelBackend', 'allauth.account.auth_backends.AuthenticationBackend']
+
+
+.. py:data:: ROOT_URLCONF
+   :value: 'core.urls'
+
+
+.. py:data:: TEMPLATES
+
+.. py:data:: WSGI_APPLICATION
+   :value: 'core.wsgi.application'
+
+
+.. py:data:: DATABASES
+
+.. py:data:: AUTH_PASSWORD_VALIDATORS
+
+.. py:data:: LANGUAGE_CODE
+   :value: 'en-us'
+
+
+.. py:data:: TIME_ZONE
+   :value: 'UTC'
+
+
+.. py:data:: USE_I18N
+   :value: True
+
+
+.. py:data:: USE_TZ
+   :value: True
+
+
+.. py:data:: STATIC_URL
+   :value: 'static/'
+
+
+.. py:data:: DEFAULT_AUTO_FIELD
+   :value: 'django.db.models.BigAutoField'
+
+
+.. py:data:: REST_FRAMEWORK
+
+.. py:data:: CSRF_COOKIE_SECURE
+   :value: False
+
+
+.. py:data:: CSRF_COOKIE_HTTPONLY
+   :value: False
+
+
+.. py:data:: CSRF_COOKIE_SAMESITE
+   :value: 'Lax'
+
+
+.. py:data:: HEADLESS_ONLY
+   :value: True
+
+
+.. py:data:: ACCOUNT_AUTHENTICATION_METHOD
+   :value: 'username_email'
+
+
+.. py:data:: ACCOUNT_EMAIL_VERIFICATION
+   :value: 'mandatory'
+
+
+.. py:data:: ACCOUNT_EMAIL_REQUIRED
+   :value: True
+
+
+.. py:data:: ACCOUNT_CONFIRM_EMAIL_ON_GET
+   :value: True
+
+
+.. py:data:: ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS
+   :value: 3
+
+
+.. py:data:: ACCOUNT_UNIQUE_EMAIL
+   :value: True
+
+
+.. py:data:: REST_AUTH_REGISTER_SERIALIZER
+   :value: 'users.serializers.CustomRegisterSerializer'
+
+
+.. py:data:: ACCOUNT_SIGNUP_REDIRECT_URL
+   :value: None
+
+
+.. py:data:: ACCOUNT_SIGNUP_FORM_CLASS
+   :value: None
+
+
+.. py:data:: ACCOUNT_ADAPTER
+   :value: 'utilities.adapters.CustomAccountAdapter'
+
+
+.. py:data:: HEADLESS_FRONTEND_URLS
+
+.. py:data:: EMAIL_BACKEND
+   :value: 'django.core.mail.backends.console.EmailBackend'
+
+
+.. py:data:: EMAIL_HOST
+   :value: 'smtp.your-email-provider.com'
+
+
+.. py:data:: EMAIL_PORT
+   :value: 587
+
+
+.. py:data:: EMAIL_USE_TLS
+   :value: True
+
+
+.. py:data:: EMAIL_HOST_USER
+   :value: 'your-email@example.com'
+
+
+.. py:data:: EMAIL_HOST_PASSWORD
+   :value: 'your-email-password'
+
+
+.. py:data:: DEFAULT_FROM_EMAIL
+   :value: 'your-email@example.com'
+
+
+.. py:data:: MEDIA_URL
+   :value: '/media/'
+
+
+.. py:data:: MEDIA_ROOT
+
+.. py:data:: SITE_NAME
+   :value: 'Boilerplate'
+
+
+.. py:data:: CELERY_BROKER_URL
+   :value: 'redis://localhost:6379/0'
+
+
+.. py:data:: CELERY_ACCEPT_CONTENT
+   :value: ['json']
+
+
+.. py:data:: CELERY_TASK_SERIALIZER
+   :value: 'json'
+
+
+.. py:data:: CELERY_RESULT_BACKEND
+   :value: 'redis://localhost:6379/0'
+
+
+.. py:data:: CELERY_CACHE_BACKEND
+   :value: 'default'
+
+
+.. py:data:: CELERY_BEAT_SCHEDULER
+   :value: 'django_celery_beat.schedulers.DatabaseScheduler'
+
+

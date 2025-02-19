@@ -1,0 +1,6 @@
+messaging.admin
+===============
+
+.. py:module:: messaging.admin
+
+

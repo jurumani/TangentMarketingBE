@@ -1,0 +1,21 @@
+messaging
+=========
+
+.. py:module:: messaging
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/messaging/admin/index
+   /autoapi/messaging/apps/index
+   /autoapi/messaging/models/index
+   /autoapi/messaging/serializers/index
+   /autoapi/messaging/tests/index
+   /autoapi/messaging/urls/index
+   /autoapi/messaging/views/index
+
+

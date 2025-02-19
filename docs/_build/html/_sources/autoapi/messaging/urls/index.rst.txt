@@ -1,0 +1,22 @@
+messaging.urls
+==============
+
+.. py:module:: messaging.urls
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   messaging.urls.router
+   messaging.urls.urlpatterns
+
+
+Module Contents
+---------------
+
+.. py:data:: router
+
+.. py:data:: urlpatterns
+

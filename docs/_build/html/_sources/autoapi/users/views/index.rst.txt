@@ -1,0 +1,164 @@
+users.views
+===========
+
+.. py:module:: users.views
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   users.views.User
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   users.views.UsersViewSet
+   users.views.CustomSignupView
+   users.views.CustomLoginView
+   users.views.CustomLogoutView
+   users.views.CustomPasswordResetView
+   users.views.CustomPasswordResetConfirmView
+   users.views.CustomPasswordResetFromKeyView
+
+
+Module Contents
+---------------
+
+.. py:data:: User
+
+.. py:class:: UsersViewSet(**kwargs)
+
+   Bases: :py:obj:`rest_framework.viewsets.ViewSet`
+
+
+   A ViewSet for managing user-related actions such as login, logout, listing users, deleting users,
+   and managing user groups. Provides endpoints for handling user authentication and group management.
+
+
+   .. py:attribute:: permission_classes
+
+
+   .. py:method:: login(request)
+
+
+   .. py:method:: logout(request)
+
+
+   .. py:method:: list_users(request)
+
+
+   .. py:method:: search_users(request)
+
+
+   .. py:method:: delete_user(request, pk=None)
+
+
+   .. py:method:: list_groups(request)
+
+
+   .. py:method:: create_group(request)
+
+
+   .. py:method:: delete_group(request, pk=None)
+
+
+   .. py:method:: update_profile(request)
+
+
+   .. py:method:: profile(request)
+
+
+   .. py:method:: change_password(request)
+
+
+.. py:class:: CustomSignupView(**kwargs)
+
+   Bases: :py:obj:`rest_framework.views.APIView`
+
+
+   Intentionally simple parent class for all views. Only implements
+   dispatch-by-method and simple sanity checking.
+
+
+   .. py:attribute:: permission_classes
+
+
+   .. py:method:: post(request)
+
+
+.. py:class:: CustomLoginView(**kwargs)
+
+   Bases: :py:obj:`rest_framework.views.APIView`
+
+
+   Intentionally simple parent class for all views. Only implements
+   dispatch-by-method and simple sanity checking.
+
+
+   .. py:attribute:: permission_classes
+
+
+   .. py:method:: post(request)
+
+
+.. py:class:: CustomLogoutView(**kwargs)
+
+   Bases: :py:obj:`rest_framework.views.APIView`
+
+
+   Intentionally simple parent class for all views. Only implements
+   dispatch-by-method and simple sanity checking.
+
+
+   .. py:method:: post(request)
+
+
+.. py:class:: CustomPasswordResetView(**kwargs)
+
+   Bases: :py:obj:`rest_framework.views.APIView`
+
+
+   Intentionally simple parent class for all views. Only implements
+   dispatch-by-method and simple sanity checking.
+
+
+   .. py:attribute:: permission_classes
+
+
+   .. py:method:: post(request)
+
+
+.. py:class:: CustomPasswordResetConfirmView(**kwargs)
+
+   Bases: :py:obj:`rest_framework.views.APIView`
+
+
+   Intentionally simple parent class for all views. Only implements
+   dispatch-by-method and simple sanity checking.
+
+
+   .. py:attribute:: permission_classes
+
+
+   .. py:method:: post(request)
+
+
+.. py:class:: CustomPasswordResetFromKeyView(**kwargs)
+
+   Bases: :py:obj:`allauth.account.views.PasswordResetFromKeyView`
+
+
+   A view for displaying a form and rendering a template response.
+
+
+   .. py:method:: get_context_data(**kwargs)
+
+      Insert the form into the context dict.
+
+
+

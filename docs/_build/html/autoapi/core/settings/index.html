@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>core.settings &#8212; Boilerplate 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <script src="../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="core.urls" href="../urls/index.html" />
+    <link rel="prev" title="core.celery" href="../celery/index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-core.settings">
+<span id="core-settings"></span><h1>core.settings<a class="headerlink" href="#module-core.settings" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.BASE_DIR" title="core.settings.BASE_DIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BASE_DIR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.ENVIRONMENT" title="core.settings.ENVIRONMENT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ENVIRONMENT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.env_file" title="core.settings.env_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">env_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.DEBUG" title="core.settings.DEBUG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEBUG</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.SECRET_KEY" title="core.settings.SECRET_KEY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SECRET_KEY</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.ALLOWED_HOSTS" title="core.settings.ALLOWED_HOSTS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ALLOWED_HOSTS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.FRONTEND_URL" title="core.settings.FRONTEND_URL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FRONTEND_URL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.CORS_ALLOWED_ORIGINS" title="core.settings.CORS_ALLOWED_ORIGINS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CORS_ALLOWED_ORIGINS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.CORS_ALLOW_CREDENTIALS" title="core.settings.CORS_ALLOW_CREDENTIALS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CORS_ALLOW_CREDENTIALS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.SITE_ID" title="core.settings.SITE_ID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SITE_ID</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.INSTALLED_APPS" title="core.settings.INSTALLED_APPS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.MIDDLEWARE" title="core.settings.MIDDLEWARE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MIDDLEWARE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.AUTHENTICATION_BACKENDS" title="core.settings.AUTHENTICATION_BACKENDS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AUTHENTICATION_BACKENDS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.ROOT_URLCONF" title="core.settings.ROOT_URLCONF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ROOT_URLCONF</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.TEMPLATES" title="core.settings.TEMPLATES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TEMPLATES</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.WSGI_APPLICATION" title="core.settings.WSGI_APPLICATION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WSGI_APPLICATION</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.DATABASES" title="core.settings.DATABASES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DATABASES</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.AUTH_PASSWORD_VALIDATORS" title="core.settings.AUTH_PASSWORD_VALIDATORS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AUTH_PASSWORD_VALIDATORS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.LANGUAGE_CODE" title="core.settings.LANGUAGE_CODE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LANGUAGE_CODE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.TIME_ZONE" title="core.settings.TIME_ZONE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TIME_ZONE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.USE_I18N" title="core.settings.USE_I18N"><code class="xref py py-obj docutils literal notranslate"><span class="pre">USE_I18N</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.USE_TZ" title="core.settings.USE_TZ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">USE_TZ</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.STATIC_URL" title="core.settings.STATIC_URL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">STATIC_URL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.DEFAULT_AUTO_FIELD" title="core.settings.DEFAULT_AUTO_FIELD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_AUTO_FIELD</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.REST_FRAMEWORK" title="core.settings.REST_FRAMEWORK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REST_FRAMEWORK</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.CSRF_COOKIE_SECURE" title="core.settings.CSRF_COOKIE_SECURE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CSRF_COOKIE_SECURE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.CSRF_COOKIE_HTTPONLY" title="core.settings.CSRF_COOKIE_HTTPONLY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CSRF_COOKIE_HTTPONLY</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.CSRF_COOKIE_SAMESITE" title="core.settings.CSRF_COOKIE_SAMESITE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CSRF_COOKIE_SAMESITE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.HEADLESS_ONLY" title="core.settings.HEADLESS_ONLY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HEADLESS_ONLY</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_AUTHENTICATION_METHOD" title="core.settings.ACCOUNT_AUTHENTICATION_METHOD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_AUTHENTICATION_METHOD</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_EMAIL_VERIFICATION" title="core.settings.ACCOUNT_EMAIL_VERIFICATION"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_EMAIL_VERIFICATION</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_EMAIL_REQUIRED" title="core.settings.ACCOUNT_EMAIL_REQUIRED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_EMAIL_REQUIRED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_CONFIRM_EMAIL_ON_GET" title="core.settings.ACCOUNT_CONFIRM_EMAIL_ON_GET"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_CONFIRM_EMAIL_ON_GET</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS" title="core.settings.ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_UNIQUE_EMAIL" title="core.settings.ACCOUNT_UNIQUE_EMAIL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_UNIQUE_EMAIL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.REST_AUTH_REGISTER_SERIALIZER" title="core.settings.REST_AUTH_REGISTER_SERIALIZER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REST_AUTH_REGISTER_SERIALIZER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_SIGNUP_REDIRECT_URL" title="core.settings.ACCOUNT_SIGNUP_REDIRECT_URL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_SIGNUP_REDIRECT_URL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_SIGNUP_FORM_CLASS" title="core.settings.ACCOUNT_SIGNUP_FORM_CLASS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_SIGNUP_FORM_CLASS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.ACCOUNT_ADAPTER" title="core.settings.ACCOUNT_ADAPTER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCOUNT_ADAPTER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.HEADLESS_FRONTEND_URLS" title="core.settings.HEADLESS_FRONTEND_URLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HEADLESS_FRONTEND_URLS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.EMAIL_BACKEND" title="core.settings.EMAIL_BACKEND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EMAIL_BACKEND</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.EMAIL_HOST" title="core.settings.EMAIL_HOST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EMAIL_HOST</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.EMAIL_PORT" title="core.settings.EMAIL_PORT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EMAIL_PORT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.EMAIL_USE_TLS" title="core.settings.EMAIL_USE_TLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EMAIL_USE_TLS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.EMAIL_HOST_USER" title="core.settings.EMAIL_HOST_USER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EMAIL_HOST_USER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.EMAIL_HOST_PASSWORD" title="core.settings.EMAIL_HOST_PASSWORD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EMAIL_HOST_PASSWORD</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.DEFAULT_FROM_EMAIL" title="core.settings.DEFAULT_FROM_EMAIL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_FROM_EMAIL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.MEDIA_URL" title="core.settings.MEDIA_URL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MEDIA_URL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.MEDIA_ROOT" title="core.settings.MEDIA_ROOT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MEDIA_ROOT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.SITE_NAME" title="core.settings.SITE_NAME"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SITE_NAME</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.CELERY_BROKER_URL" title="core.settings.CELERY_BROKER_URL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CELERY_BROKER_URL</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.CELERY_ACCEPT_CONTENT" title="core.settings.CELERY_ACCEPT_CONTENT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CELERY_ACCEPT_CONTENT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.CELERY_TASK_SERIALIZER" title="core.settings.CELERY_TASK_SERIALIZER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CELERY_TASK_SERIALIZER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.CELERY_RESULT_BACKEND" title="core.settings.CELERY_RESULT_BACKEND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CELERY_RESULT_BACKEND</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#core.settings.CELERY_CACHE_BACKEND" title="core.settings.CELERY_CACHE_BACKEND"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CELERY_CACHE_BACKEND</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#core.settings.CELERY_BEAT_SCHEDULER" title="core.settings.CELERY_BEAT_SCHEDULER"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CELERY_BEAT_SCHEDULER</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.BASE_DIR">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">BASE_DIR</span></span><a class="headerlink" href="#core.settings.BASE_DIR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ENVIRONMENT">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ENVIRONMENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'development'</span></em><a class="headerlink" href="#core.settings.ENVIRONMENT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.env_file">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">env_file</span></span><a class="headerlink" href="#core.settings.env_file" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.DEBUG">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">DEBUG</span></span><a class="headerlink" href="#core.settings.DEBUG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.SECRET_KEY">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">SECRET_KEY</span></span><a class="headerlink" href="#core.settings.SECRET_KEY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ALLOWED_HOSTS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ALLOWED_HOSTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['c5ea-169-0-26-81.ngrok-free.app',</span> <span class="pre">'127.0.0.1',</span> <span class="pre">'192.168.8.213']</span></em><a class="headerlink" href="#core.settings.ALLOWED_HOSTS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.FRONTEND_URL">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">FRONTEND_URL</span></span><a class="headerlink" href="#core.settings.FRONTEND_URL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CORS_ALLOWED_ORIGINS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CORS_ALLOWED_ORIGINS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['http://localhost:8100',</span> <span class="pre">'http://localhost']</span></em><a class="headerlink" href="#core.settings.CORS_ALLOWED_ORIGINS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CORS_ALLOW_CREDENTIALS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CORS_ALLOW_CREDENTIALS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.CORS_ALLOW_CREDENTIALS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.SITE_ID">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">SITE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#core.settings.SITE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.INSTALLED_APPS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">INSTALLED_APPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['django.contrib.admin',</span> <span class="pre">'django.contrib.auth',</span> <span class="pre">'django.contrib.contenttypes',...</span></em><a class="headerlink" href="#core.settings.INSTALLED_APPS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.MIDDLEWARE">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">MIDDLEWARE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['corsheaders.middleware.CorsMiddleware',</span> <span class="pre">'django.middleware.security.SecurityMiddleware',...</span></em><a class="headerlink" href="#core.settings.MIDDLEWARE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.AUTHENTICATION_BACKENDS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">AUTHENTICATION_BACKENDS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['django.contrib.auth.backends.ModelBackend',</span> <span class="pre">'allauth.account.auth_backends.AuthenticationBackend']</span></em><a class="headerlink" href="#core.settings.AUTHENTICATION_BACKENDS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ROOT_URLCONF">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ROOT_URLCONF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'core.urls'</span></em><a class="headerlink" href="#core.settings.ROOT_URLCONF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.TEMPLATES">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">TEMPLATES</span></span><a class="headerlink" href="#core.settings.TEMPLATES" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.WSGI_APPLICATION">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">WSGI_APPLICATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'core.wsgi.application'</span></em><a class="headerlink" href="#core.settings.WSGI_APPLICATION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.DATABASES">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">DATABASES</span></span><a class="headerlink" href="#core.settings.DATABASES" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.AUTH_PASSWORD_VALIDATORS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">AUTH_PASSWORD_VALIDATORS</span></span><a class="headerlink" href="#core.settings.AUTH_PASSWORD_VALIDATORS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.LANGUAGE_CODE">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">LANGUAGE_CODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'en-us'</span></em><a class="headerlink" href="#core.settings.LANGUAGE_CODE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.TIME_ZONE">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">TIME_ZONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UTC'</span></em><a class="headerlink" href="#core.settings.TIME_ZONE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.USE_I18N">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">USE_I18N</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.USE_I18N" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.USE_TZ">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">USE_TZ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.USE_TZ" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.STATIC_URL">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">STATIC_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'static/'</span></em><a class="headerlink" href="#core.settings.STATIC_URL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.DEFAULT_AUTO_FIELD">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_AUTO_FIELD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#core.settings.DEFAULT_AUTO_FIELD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.REST_FRAMEWORK">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">REST_FRAMEWORK</span></span><a class="headerlink" href="#core.settings.REST_FRAMEWORK" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CSRF_COOKIE_SECURE">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CSRF_COOKIE_SECURE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#core.settings.CSRF_COOKIE_SECURE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CSRF_COOKIE_HTTPONLY">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CSRF_COOKIE_HTTPONLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#core.settings.CSRF_COOKIE_HTTPONLY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CSRF_COOKIE_SAMESITE">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CSRF_COOKIE_SAMESITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Lax'</span></em><a class="headerlink" href="#core.settings.CSRF_COOKIE_SAMESITE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.HEADLESS_ONLY">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">HEADLESS_ONLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.HEADLESS_ONLY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_AUTHENTICATION_METHOD">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_AUTHENTICATION_METHOD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'username_email'</span></em><a class="headerlink" href="#core.settings.ACCOUNT_AUTHENTICATION_METHOD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_EMAIL_VERIFICATION">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_EMAIL_VERIFICATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mandatory'</span></em><a class="headerlink" href="#core.settings.ACCOUNT_EMAIL_VERIFICATION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_EMAIL_REQUIRED">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_EMAIL_REQUIRED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.ACCOUNT_EMAIL_REQUIRED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_CONFIRM_EMAIL_ON_GET">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_CONFIRM_EMAIL_ON_GET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.ACCOUNT_CONFIRM_EMAIL_ON_GET" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#core.settings.ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_UNIQUE_EMAIL">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_UNIQUE_EMAIL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.ACCOUNT_UNIQUE_EMAIL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.REST_AUTH_REGISTER_SERIALIZER">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">REST_AUTH_REGISTER_SERIALIZER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'users.serializers.CustomRegisterSerializer'</span></em><a class="headerlink" href="#core.settings.REST_AUTH_REGISTER_SERIALIZER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_SIGNUP_REDIRECT_URL">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_SIGNUP_REDIRECT_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#core.settings.ACCOUNT_SIGNUP_REDIRECT_URL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_SIGNUP_FORM_CLASS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_SIGNUP_FORM_CLASS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#core.settings.ACCOUNT_SIGNUP_FORM_CLASS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.ACCOUNT_ADAPTER">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">ACCOUNT_ADAPTER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'utilities.adapters.CustomAccountAdapter'</span></em><a class="headerlink" href="#core.settings.ACCOUNT_ADAPTER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.HEADLESS_FRONTEND_URLS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">HEADLESS_FRONTEND_URLS</span></span><a class="headerlink" href="#core.settings.HEADLESS_FRONTEND_URLS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.EMAIL_BACKEND">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">EMAIL_BACKEND</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.core.mail.backends.console.EmailBackend'</span></em><a class="headerlink" href="#core.settings.EMAIL_BACKEND" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.EMAIL_HOST">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">EMAIL_HOST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'smtp.your-email-provider.com'</span></em><a class="headerlink" href="#core.settings.EMAIL_HOST" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.EMAIL_PORT">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">EMAIL_PORT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">587</span></em><a class="headerlink" href="#core.settings.EMAIL_PORT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.EMAIL_USE_TLS">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">EMAIL_USE_TLS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#core.settings.EMAIL_USE_TLS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.EMAIL_HOST_USER">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">EMAIL_HOST_USER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'your-email&#64;example.com'</span></em><a class="headerlink" href="#core.settings.EMAIL_HOST_USER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.EMAIL_HOST_PASSWORD">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">EMAIL_HOST_PASSWORD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'your-email-password'</span></em><a class="headerlink" href="#core.settings.EMAIL_HOST_PASSWORD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.DEFAULT_FROM_EMAIL">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_FROM_EMAIL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'your-email&#64;example.com'</span></em><a class="headerlink" href="#core.settings.DEFAULT_FROM_EMAIL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.MEDIA_URL">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">MEDIA_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/media/'</span></em><a class="headerlink" href="#core.settings.MEDIA_URL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.MEDIA_ROOT">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">MEDIA_ROOT</span></span><a class="headerlink" href="#core.settings.MEDIA_ROOT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.SITE_NAME">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">SITE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Boilerplate'</span></em><a class="headerlink" href="#core.settings.SITE_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CELERY_BROKER_URL">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CELERY_BROKER_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'redis://localhost:6379/0'</span></em><a class="headerlink" href="#core.settings.CELERY_BROKER_URL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CELERY_ACCEPT_CONTENT">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CELERY_ACCEPT_CONTENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['json']</span></em><a class="headerlink" href="#core.settings.CELERY_ACCEPT_CONTENT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CELERY_TASK_SERIALIZER">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CELERY_TASK_SERIALIZER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'json'</span></em><a class="headerlink" href="#core.settings.CELERY_TASK_SERIALIZER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CELERY_RESULT_BACKEND">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CELERY_RESULT_BACKEND</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'redis://localhost:6379/0'</span></em><a class="headerlink" href="#core.settings.CELERY_RESULT_BACKEND" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CELERY_CACHE_BACKEND">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CELERY_CACHE_BACKEND</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></em><a class="headerlink" href="#core.settings.CELERY_CACHE_BACKEND" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="core.settings.CELERY_BEAT_SCHEDULER">
+<span class="sig-prename descclassname"><span class="pre">core.settings.</span></span><span class="sig-name descname"><span class="pre">CELERY_BEAT_SCHEDULER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django_celery_beat.schedulers.DatabaseScheduler'</span></em><a class="headerlink" href="#core.settings.CELERY_BEAT_SCHEDULER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Boilerplate</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Boilerplate Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../users/index.html">users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../messaging/index.html">messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utilities/index.html">utilities</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">API Reference</a><ul>
+  <li><a href="../index.html">core</a><ul>
+      <li>Previous: <a href="../celery/index.html" title="previous chapter">core.celery</a></li>
+      <li>Next: <a href="../urls/index.html" title="next chapter">core.urls</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Glen Ansell.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../../_sources/autoapi/core/settings/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

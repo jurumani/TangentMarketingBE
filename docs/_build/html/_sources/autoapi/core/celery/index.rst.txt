@@ -1,0 +1,29 @@
+core.celery
+===========
+
+.. py:module:: core.celery
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   core.celery.app
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   core.celery.debug_task
+
+
+Module Contents
+---------------
+
+.. py:data:: app
+
+.. py:function:: debug_task(self)
+

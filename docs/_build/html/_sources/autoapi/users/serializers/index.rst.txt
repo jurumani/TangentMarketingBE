@@ -1,0 +1,176 @@
+users.serializers
+=================
+
+.. py:module:: users.serializers
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   users.serializers.User
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   users.serializers.GroupSerializer
+   users.serializers.UserProfileSerializer
+   users.serializers.UserSerializer
+   users.serializers.PublicUserSerializer
+
+
+Module Contents
+---------------
+
+.. py:data:: User
+
+.. py:class:: GroupSerializer(instance=None, data=empty, **kwargs)
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+
+   Serializer for handling the Group model.
+   Includes fields for the group's ID and name.
+
+
+   .. py:class:: Meta
+
+      .. py:attribute:: model
+
+
+      .. py:attribute:: fields
+         :value: ['id', 'name']
+
+
+
+
+.. py:class:: UserProfileSerializer(instance=None, data=empty, **kwargs)
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+
+   A `ModelSerializer` is just a regular `Serializer`, except that:
+
+   * A set of default fields are automatically populated.
+   * A set of default validators are automatically populated.
+   * Default `.create()` and `.update()` implementations are provided.
+
+   The process of automatically determining a set of serializer fields
+   based on the model fields is reasonably complex, but you almost certainly
+   don't need to dig into the implementation.
+
+   If the `ModelSerializer` class *doesn't* generate the set of fields that
+   you need you should either declare the extra/differing fields explicitly on
+   the serializer class, or simply use a `Serializer` class.
+
+
+   .. py:attribute:: first_name
+
+
+   .. py:attribute:: last_name
+
+
+   .. py:attribute:: email
+
+
+   .. py:attribute:: isSuperadmin
+
+
+   .. py:attribute:: user_id
+
+
+   .. py:class:: Meta
+
+      .. py:attribute:: model
+
+
+      .. py:attribute:: fields
+         :value: ['id', 'user_id', 'first_name', 'last_name', 'email', 'bio', 'profile_picture', 'isSuperadmin']
+
+
+
+
+   .. py:method:: update(instance, validated_data)
+
+
+.. py:class:: UserSerializer(instance=None, data=empty, **kwargs)
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+
+   Serializer for handling the User model.
+   Includes fields for user information, group management, superuser status, and user profile.
+
+
+   .. py:attribute:: groups
+
+
+   .. py:attribute:: is_superuser
+
+
+   .. py:attribute:: profile
+
+
+   .. py:class:: Meta
+
+      .. py:attribute:: model
+
+
+      .. py:attribute:: fields
+         :value: ['id', 'username', 'email', 'first_name', 'last_name', 'groups', 'is_superuser', 'profile']
+
+
+
+
+   .. py:method:: create(validated_data)
+
+      Customize the user creation process.
+      Handles group assignment, superuser status, and user profile.
+
+
+
+   .. py:method:: update(instance, validated_data)
+
+      Customize the update process.
+      Handles password updates, group management, superuser status, and user profile.
+
+
+
+.. py:class:: PublicUserSerializer(instance=None, data=empty, **kwargs)
+
+   Bases: :py:obj:`rest_framework.serializers.ModelSerializer`
+
+
+   A `ModelSerializer` is just a regular `Serializer`, except that:
+
+   * A set of default fields are automatically populated.
+   * A set of default validators are automatically populated.
+   * Default `.create()` and `.update()` implementations are provided.
+
+   The process of automatically determining a set of serializer fields
+   based on the model fields is reasonably complex, but you almost certainly
+   don't need to dig into the implementation.
+
+   If the `ModelSerializer` class *doesn't* generate the set of fields that
+   you need you should either declare the extra/differing fields explicitly on
+   the serializer class, or simply use a `Serializer` class.
+
+
+   .. py:attribute:: profile_picture
+
+
+   .. py:class:: Meta
+
+      .. py:attribute:: model
+
+
+      .. py:attribute:: fields
+         :value: ['id', 'first_name', 'last_name', 'profile_picture']
+
+
+
+

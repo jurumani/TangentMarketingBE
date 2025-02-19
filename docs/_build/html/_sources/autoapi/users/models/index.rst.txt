@@ -1,0 +1,47 @@
+users.models
+============
+
+.. py:module:: users.models
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   users.models.User
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   users.models.UserProfile
+
+
+Module Contents
+---------------
+
+.. py:data:: User
+
+.. py:class:: UserProfile(*args, **kwargs)
+
+   Bases: :py:obj:`django.db.models.Model`
+
+
+   Make subclasses preserve the alters_data attribute on overridden methods.
+
+
+   .. py:attribute:: user
+
+
+   .. py:attribute:: profile_picture
+
+
+   .. py:attribute:: bio
+
+
+   .. py:method:: __str__()
+
+

@@ -1,0 +1,55 @@
+messaging.models
+================
+
+.. py:module:: messaging.models
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   messaging.models.Message
+
+
+Module Contents
+---------------
+
+.. py:class:: Message(*args, **kwargs)
+
+   Bases: :py:obj:`django.db.models.Model`
+
+
+   Make subclasses preserve the alters_data attribute on overridden methods.
+
+
+   .. py:attribute:: sender
+
+
+   .. py:attribute:: recipient
+
+
+   .. py:attribute:: content
+
+
+   .. py:attribute:: timestamp
+
+
+   .. py:attribute:: is_read
+
+
+   .. py:attribute:: is_system_message
+
+
+   .. py:attribute:: message_type
+
+
+   .. py:attribute:: actions
+
+
+   .. py:method:: __str__()
+
+
+   .. py:method:: trigger_action(action_type)
+
+

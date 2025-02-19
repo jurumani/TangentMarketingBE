@@ -1,0 +1,21 @@
+utilities
+=========
+
+.. py:module:: utilities
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/utilities/adapters/index
+   /autoapi/utilities/admin/index
+   /autoapi/utilities/apps/index
+   /autoapi/utilities/models/index
+   /autoapi/utilities/tests/index
+   /autoapi/utilities/urls/index
+   /autoapi/utilities/views/index
+
+

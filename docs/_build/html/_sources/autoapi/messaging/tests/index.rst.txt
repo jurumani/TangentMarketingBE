@@ -1,0 +1,69 @@
+messaging.tests
+===============
+
+.. py:module:: messaging.tests
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   messaging.tests.User
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   messaging.tests.MessagingTestCase
+
+
+Module Contents
+---------------
+
+.. py:data:: User
+
+.. py:class:: MessagingTestCase(methodName='runTest')
+
+   Bases: :py:obj:`rest_framework.test.APITestCase`
+
+
+   Similar to TransactionTestCase, but use `transaction.atomic()` to achieve
+   test isolation.
+
+   In most situations, TestCase should be preferred to TransactionTestCase as
+   it allows faster execution. However, there are some situations where using
+   TransactionTestCase might be necessary (e.g. testing some transactional
+   behavior).
+
+   On database backends with no transaction support, TestCase behaves as
+   TransactionTestCase.
+
+
+   .. py:method:: setUp()
+
+      Set up test data.
+      Create a test user, generate a token, and authenticate the client.
+
+
+
+   .. py:method:: test_create_message_with_actions()
+
+      Test creating a new message with actions.
+
+
+
+   .. py:method:: test_trigger_message_action()
+
+      Test triggering an action from a message.
+
+
+
+   .. py:method:: test_invalid_action_trigger()
+
+      Test triggering an invalid action from a message.
+
+
+

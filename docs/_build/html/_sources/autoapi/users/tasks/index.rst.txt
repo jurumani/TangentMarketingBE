@@ -1,0 +1,22 @@
+users.tasks
+===========
+
+.. py:module:: users.tasks
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   users.tasks.send_welcome_email
+
+
+Module Contents
+---------------
+
+.. py:function:: send_welcome_email(user_email)
+
+   A simple task to send a welcome email to a newly registered user.
+
+
