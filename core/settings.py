@@ -25,12 +25,13 @@ WAAPI_INSTANCE_ID = os.getenv('WAAPI_INSTANCE_ID')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
-ALLOWED_HOSTS = ['c5ea-169-0-26-81.ngrok-free.app', '127.0.0.1', '192.168.8.213']
+ALLOWED_HOSTS = ['c5ea-169-0-26-81.ngrok-free.app', '127.0.0.1', '192.168.8.213', '7f2c-165-0-142-182.ngrok-free.app']
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:8100')  # Replace this with your Vue app's URL
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:8100', 'http://localhost',  # Default Ionic serve port
+    'https://7f2c-165-0-142-182.ngrok-free.app'
 ]
 
 CORS_ALLOW_CREDENTIALS = True

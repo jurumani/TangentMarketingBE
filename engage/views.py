@@ -9,6 +9,9 @@ from users.models import UserProfile  # Assuming UserProfile is where the link t
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 import json
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.views import View
 
 # Ensure you have WAAPI_BASE_URL and API_KEY in your Django settings
 WAAPI_BASE_URL = settings.WAAPI_BASE_URL
@@ -178,7 +181,9 @@ def get_qr_code(request):
         return JsonResponse({"error": str(e)}, status=500)
 
 # View to check the connection status of a user's WaapiInstance
-@login_required
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def check_waapi_status(request):
     user_profile = UserProfile.objects.get(user=request.user)
 
@@ -189,8 +194,26 @@ def check_waapi_status(request):
 
         endpoint = f"instances/{waapi_instance.instance_id}/client/status"
         status_data = waapi_request(endpoint)
+        
         return JsonResponse({"status": status_data.get("status")})
 
     except requests.RequestException as e:
         print(f"Error during WaAPI status request: {e}")
         return JsonResponse({"error": str(e)}, status=500)
+
+
+@permission_classes([IsAuthenticated])
+def waapi_webhook(request):
+    if request.method == 'POST':
+        try:
+            payload = json.loads(request.body)
+            # Process the webhook payload here
+            # Example: Log the event or update a database record
+            print("Received Waapi webhook:", payload)
+
+            # Respond with a 200 OK status to acknowledge receipt
+            return JsonResponse({'status': 'success'})
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
