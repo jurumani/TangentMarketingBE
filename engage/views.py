@@ -12,6 +12,7 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.views import View
+import base64
 
 # Ensure you have WAAPI_BASE_URL and API_KEY in your Django settings
 WAAPI_BASE_URL = settings.WAAPI_BASE_URL
@@ -48,7 +49,6 @@ def create_or_get_instance(request):
     })
 
 # Helper function to make requests to WaAPI with authentication headers
-import json
 
 def waapi_request(endpoint, method="GET", data=None):
     """Helper function to make requests to WaAPI with authentication headers."""
@@ -80,9 +80,7 @@ def waapi_request(endpoint, method="GET", data=None):
         if not response.text:
             print("⚠️ Warning: Received empty response from WaAPI")
             return {}
-
         return response.json()
-
     except requests.exceptions.HTTPError as http_err:
         print(f"HTTP Error: {http_err}")
         return {"error": f"HTTP Error: {http_err}"}
@@ -90,15 +88,12 @@ def waapi_request(endpoint, method="GET", data=None):
     except requests.exceptions.ConnectionError as conn_err:
         print(f"Connection Error: {conn_err}")
         return {"error": f"Connection Error: {conn_err}"}
-    
     except requests.exceptions.Timeout as timeout_err:
         print(f"Timeout Error: {timeout_err}")
         return {"error": f"Timeout Error: {timeout_err}"}
-    
     except requests.exceptions.RequestException as req_err:
         print(f"Request Error: {req_err}")
         return {"error": f"Request Error: {req_err}"}
-    
     except json.decoder.JSONDecodeError as json_err:
         print(f"JSON Decode Error: {json_err}")
         return {"error": "Invalid JSON response from WaAPI"}
@@ -217,3 +212,60 @@ def waapi_webhook(request):
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_instance_id(request):
+    user = request.user
+    try:
+        # Make a request to WaAPI to get instances
+        url = f"{WAAPI_BASE_URL}/instances"
+        headers = {"Authorization": f"Bearer {API_KEY}", "accept": "application/json"}
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        response_data = response.json()
+        
+        # Find the instance that belongs to the current user
+        instances = response_data.get("instances", [])
+        user_instance = next((instance for instance in instances if user.username in instance["name"]), None)
+
+        if user_instance:
+            return JsonResponse({"instance_id": user_instance["id"]})
+        else:
+            # Find and remove the WaapiInstance for the user
+            try:
+                user_profile = UserProfile.objects.get(user=user)
+                waapi_instance = WaapiInstance.objects.get(user_profile=user_profile)
+                waapi_instance.delete()
+                return JsonResponse({"error": "Instance not found for the user. WaapiInstance removed."}, status=404)
+            except WaapiInstance.DoesNotExist:
+                return JsonResponse({"error": "Instance not found for the user and no WaapiInstance to remove."}, status=404)
+
+    except requests.RequestException as e:
+        print(f"RequestException in get_instance_id: {e}")
+        return JsonResponse({"error": str(e)}, status=500)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def download_and_convert_to_base64(request):
+    try:
+        # Get the download URL from the request data
+        download_url = request.data.get("mediaUrl")
+        if not download_url:
+            return JsonResponse({"error": "No download URL provided."}, status=400)
+
+        # Download the media from the URL
+        response = requests.get(download_url)
+        response.raise_for_status()
+
+        # Convert the media content to base64
+        media_content = response.content
+        base64_encoded = base64.b64encode(media_content).decode('utf-8')
+
+        return JsonResponse({"base64_code": base64_encoded})
+
+    except requests.RequestException as e:
+        print(f"RequestException in download_and_convert_to_base64: {e}")
+        return JsonResponse({"error": str(e)}, status=500)
