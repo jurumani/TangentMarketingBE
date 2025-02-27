@@ -180,20 +180,23 @@ def get_qr_code(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def check_waapi_status(request):
-    user_profile = UserProfile.objects.get(user=request.user)
-
     try:
-        waapi_instance = user_profile.waapi_instance
-        if not waapi_instance:
-            return JsonResponse({"error": "No WaAPI instance found for this user."}, status=404)
+        user_profile = UserProfile.objects.get(user=request.user)
 
-        endpoint = f"instances/{waapi_instance.instance_id}/client/status"
-        status_data = waapi_request(endpoint)
-        
-        return JsonResponse({"status": status_data.get("status")})
+        try:
+            waapi_instance = user_profile.waapi_instance
+            if not waapi_instance:
+                return JsonResponse({"error": "No WaAPI instance found for this user."}, status=404)
 
-    except requests.RequestException as e:
-        print(f"Error during WaAPI status request: {e}")
+            endpoint = f"instances/{waapi_instance.instance_id}/client/status"
+            status_data = waapi_request(endpoint)
+            
+            return JsonResponse({"status": status_data.get("status")})
+
+        except requests.RequestException as e:
+            print(f"Error during WaAPI status request: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
 
 
@@ -217,33 +220,36 @@ def waapi_webhook(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_instance_id(request):
-    user = request.user
     try:
-        # Make a request to WaAPI to get instances
-        url = f"{WAAPI_BASE_URL}/instances"
-        headers = {"Authorization": f"Bearer {API_KEY}", "accept": "application/json"}
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-        response_data = response.json()
-        
-        # Find the instance that belongs to the current user
-        instances = response_data.get("instances", [])
-        user_instance = next((instance for instance in instances if user.username in instance["name"]), None)
+        user = request.user
+        try:
+            # Make a request to WaAPI to get instances
+            url = f"{WAAPI_BASE_URL}/instances"
+            headers = {"Authorization": f"Bearer {API_KEY}", "accept": "application/json"}
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            response_data = response.json()
+            
+            # Find the instance that belongs to the current user
+            instances = response_data.get("instances", [])
+            user_instance = next((instance for instance in instances if user.username in instance["name"]), None)
 
-        if user_instance:
-            return JsonResponse({"instance_id": user_instance["id"]})
-        else:
-            # Find and remove the WaapiInstance for the user
-            try:
-                user_profile = UserProfile.objects.get(user=user)
-                waapi_instance = WaapiInstance.objects.get(user_profile=user_profile)
-                waapi_instance.delete()
-                return JsonResponse({"error": "Instance not found for the user. WaapiInstance removed."}, status=404)
-            except WaapiInstance.DoesNotExist:
-                return JsonResponse({"error": "Instance not found for the user and no WaapiInstance to remove."}, status=404)
+            if user_instance:
+                return JsonResponse({"instance_id": user_instance["id"]})
+            else:
+                # Find and remove the WaapiInstance for the user
+                try:
+                    user_profile = UserProfile.objects.get(user=user)
+                    waapi_instance = WaapiInstance.objects.get(user_profile=user_profile)
+                    waapi_instance.delete()
+                    return JsonResponse({"error": "Instance not found for the user. WaapiInstance removed."}, status=404)
+                except WaapiInstance.DoesNotExist:
+                    return JsonResponse({"error": "Instance not found for the user and no WaapiInstance to remove."}, status=404)
 
-    except requests.RequestException as e:
-        print(f"RequestException in get_instance_id: {e}")
+        except requests.RequestException as e:
+            print(f"RequestException in get_instance_id: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
 
 
