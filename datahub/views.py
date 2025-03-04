@@ -148,6 +148,8 @@ class LushaContactSearchView(APIView):
             if not contacts:
                 print("⚠️ No contacts returned from Lusha API.")
                 return Response({'detail': 'No contacts found.'}, status=200)
+            
+            lusha_contacts = []
 
             for contact in contacts:
                 try:
@@ -193,13 +195,15 @@ class LushaContactSearchView(APIView):
                             'visibility': 'public'
                         }
                     )
+                    lusha_contacts.append(ContactSerializer(contact_obj).data)
+                    print(f"✅ Processed contact: {contact_obj}, Created: {created}")
                     print(f"✅ Processed contact: {contact_obj}, Created: {created}")
 
                 except Exception as e:
                     print(f"❌ Error processing contact {contact}: {e}")
                     traceback.print_exc()  # Print detailed error traceback
 
-            return Response({'detail': 'Contacts successfully enriched and saved.'})
+            return Response({'detail': 'Contacts successfully enriched and saved.', 'contacts': lusha_contacts}, status=200)
 
         except requests.RequestException as e:
             print(f"❌ Error fetching from Lusha API: {e}")
