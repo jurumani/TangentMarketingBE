@@ -50,5 +50,5 @@ class ContactSerializer(serializers.ModelSerializer):
         model = Contact
         fields = [
             'id', 'email_address', 'first_name', 'last_name', 'work_phone', 'mobile',
-            'position', 'linkedin_profile', 'company'
+            'position', 'linkedin_profile', 'company', 'lusha_contact_id'
         ]

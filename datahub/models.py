@@ -80,7 +80,7 @@ class Contact(AccessControlMixin):
     The Contact model stores information about contacts.
     Each contact is associated with a company and may have an email and phone numbers.
     """
-    email_address = models.EmailField(unique=True)
+    email_address = models.EmailField(unique=True, blank=True, null=True)
     first_name = models.CharField(max_length=255, blank=True, null=True)
     last_name = models.CharField(max_length=255, blank=True, null=True)
     responsible_person = models.CharField(max_length=255, blank=True, null=True)
@@ -91,9 +91,13 @@ class Contact(AccessControlMixin):
     mobile = models.CharField(max_length=50, blank=True, null=True)
     position = models.CharField(max_length=255, blank=True, null=True)
     linkedin_profile = models.URLField(max_length=500, blank=True, null=True, help_text="LinkedIn profile URL of the contact")
+    lusha_contact_id = models.CharField(unique=True, max_length=255, blank=True, null=True, help_text="Lusha contact ID")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.email_address})"
+    
+    class Meta:
+        unique_together = ['first_name', 'last_name', 'lusha_contact_id']
 
 
 class MXRecord(models.Model):

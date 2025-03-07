@@ -3,9 +3,9 @@ from .models import Contact, Company, Domain, Service, ServicePattern, MXRecord,
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    search_fields = ['first_name', 'last_name', 'email_address', 'work_phone', 'mobile', 'position']
+    search_fields = ['first_name', 'last_name', 'email_address', 'work_phone', 'mobile', 'position', 'owners__username']
     list_display = ['first_name', 'last_name', 'email_address', 'company', 'created_at']
-    list_filter = ['created_at']  # Optional: Adds a filter in the admin panel
+    list_filter = ['created_at', 'owners__username']  # Optional: Adds a filter in the admin panel
     ordering = ['-created_at']  # Optional: Orders by latest created first
 
 
