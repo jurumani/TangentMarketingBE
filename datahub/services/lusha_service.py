@@ -22,16 +22,16 @@ class LushaService:
                 payload["filters"]["contacts"]["include"]["jobTitles"]
             ]
 
-        print(f"🔍 DEBUG: Making request to Lusha API: {url}")
-        print(f"🔍 DEBUG: Headers sent: {headers}")
-        # Ensure correct payload format
-        print(f"🔍 DEBUG: Payload sent: {payload}")
+        # print(f"🔍 DEBUG: Making request to Lusha API: {url}")
+        # print(f"🔍 DEBUG: Headers sent: {headers}")
+        # # Ensure correct payload format
+        # print(f"🔍 DEBUG: Payload sent: {payload}")
 
         try:
             response = requests.post(url, json=payload, headers=headers)
-            print(f"🔍 DEBUG: Raw Response: {response.text}")
+            # print(f"🔍 DEBUG: Raw Response: {response}")
             response.raise_for_status()
-
+        
             response_data = response.json()
             print(f"✅ Lusha response: {response_data}")
 
@@ -43,7 +43,7 @@ class LushaService:
             return {"error": f"HTTP Error: {str(e)}"}
 
         except requests.exceptions.RequestException as e:
-            print(f"❌ Lusha API request error: {e}")
+            # print(f"❌ Lusha API request error: {e}")
             traceback.print_exc()
             return {"error": f"Request Error: {str(e)}"}
 
@@ -64,9 +64,9 @@ class LushaService:
         if not isinstance(contact_ids, list) or not (1 <= len(contact_ids) <= 100):
             return {"error": "contactIds must be a list with 1 to 100 items"}
 
-        print(f"🔍 DEBUG: Making request to Lusha API: {url}")
-        print(f"🔍 DEBUG: Headers sent: {headers}")
-        print(f"🔍 DEBUG: Payload sent: {payload}")
+        # print(f"🔍 DEBUG: Making request to Lusha API: {url}")
+        # print(f"🔍 DEBUG: Headers sent: {headers}")
+        # print(f"🔍 DEBUG: Payload sent: {payload}")
 
         try:
             response = requests.post(url, json=payload, headers=headers)
