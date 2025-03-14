@@ -206,12 +206,10 @@ def send_synthesia_video_via_whatsapp(video_id, user_id):
         # Get the instance ID
         user = User.objects.get(id=user_id)
         url = f"{settings.WAAPI_BASE_URL}/instances"
-        logger.info(f"URL: {url}")
         headers = {"Authorization": f"Bearer {settings.WAAPI_API_KEY}", "accept": "application/json"}
         response = requests.get(url, headers=headers)
         response.raise_for_status()
         response_data = response.json()
-        logger.info(f"response_data: {url}")
         instances = response_data.get("instances", [])
         user_instance = next((instance for instance in instances if user.username in instance["name"]), None)
 
