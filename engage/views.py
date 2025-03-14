@@ -1,11 +1,15 @@
 # engage/views.py
+from .tasks import create_synthesia_video
 from django.http import JsonResponse
 from django.conf import settings
 import requests
 from django.utils import timezone
-from .models import WaapiInstance
+
+from engage.serializers import SynthesiaVideoSerializer
+from .models import SynthesiaVideo, WaapiInstance
 from django.contrib.auth.decorators import login_required
-from users.models import UserProfile  # Assuming UserProfile is where the link to WaapiInstance is stored
+# Assuming UserProfile is where the link to WaapiInstance is stored
+from users.models import UserProfile
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 import json
@@ -14,15 +18,22 @@ from django.utils.decorators import method_decorator
 from django.views import View
 import base64
 
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from .serializers import SynthesiaVideoSerializer, SynthesiaVideoStatusSerializer
+
 # Ensure you have WAAPI_BASE_URL and API_KEY in your Django settings
 WAAPI_BASE_URL = settings.WAAPI_BASE_URL
-print (WAAPI_BASE_URL)
+print(WAAPI_BASE_URL)
 API_KEY = settings.WAAPI_API_KEY
 
 # View to create a new instance for a user if one doesn't exist
+
+
 def create_or_get_instance(request):
     user = request.user
-    
+
     # Check if the user already has an instance
     try:
         instance = WaapiInstance.objects.get(user=user)
@@ -50,10 +61,12 @@ def create_or_get_instance(request):
 
 # Helper function to make requests to WaAPI with authentication headers
 
+
 def waapi_request(endpoint, method="GET", data=None):
     """Helper function to make requests to WaAPI with authentication headers."""
     headers = {
-        "Authorization": f"Bearer {settings.WAAPI_API_KEY}",  # Ensure API key is correct
+        # Ensure API key is correct
+        "Authorization": f"Bearer {settings.WAAPI_API_KEY}",
         "Content-Type": "application/json",
     }
     url = f"{settings.WAAPI_BASE_URL}/{endpoint}"
@@ -84,7 +97,7 @@ def waapi_request(endpoint, method="GET", data=None):
     except requests.exceptions.HTTPError as http_err:
         print(f"HTTP Error: {http_err}")
         return {"error": f"HTTP Error: {http_err}"}
-    
+
     except requests.exceptions.ConnectionError as conn_err:
         print(f"Connection Error: {conn_err}")
         return {"error": f"Connection Error: {conn_err}"}
@@ -97,8 +110,6 @@ def waapi_request(endpoint, method="GET", data=None):
     except json.decoder.JSONDecodeError as json_err:
         print(f"JSON Decode Error: {json_err}")
         return {"error": "Invalid JSON response from WaAPI"}
-
-
 
 
 @api_view(["GET"])
@@ -116,24 +127,28 @@ def get_qr_code(request):
             return JsonResponse({"error": "User profile not found."}, status=404)
 
         # ✅ 3. Check if WaapiInstance exists for the user
-        waapi_instance = WaapiInstance.objects.filter(user_profile=user_profile).first()
+        waapi_instance = WaapiInstance.objects.filter(
+            user_profile=user_profile).first()
 
         if not waapi_instance:
             print(f"Creating new WaapiInstance for {user.username}...")
 
             # ✅ 4. Create a new instance in WaAPI
             instance_payload = {"name": f"{user.username}'s Instance"}
-            create_instance_response = waapi_request("instances", method="POST", data=instance_payload)
+            create_instance_response = waapi_request(
+                "instances", method="POST", data=instance_payload)
 
             # ✅ 5. Debug: Print response from WaAPI
-            print(f"Response from WaAPI instance creation: {create_instance_response}")
+            print(
+                f"Response from WaAPI instance creation: {create_instance_response}")
 
             # ✅ 6. Check if the instance was created successfully
             # ✅ 6. Check if the instance was created successfully
             if not create_instance_response or "instance" not in create_instance_response or "id" not in create_instance_response["instance"]:
                 return JsonResponse({"error": "Failed to create instance in WaAPI"}, status=500)
 
-            instance_id = create_instance_response["instance"]["id"]  # ✅ Correctly extract instance ID
+            # ✅ Correctly extract instance ID
+            instance_id = create_instance_response["instance"]["id"]
 
             if not instance_id:
                 return JsonResponse({"error": "Instance ID missing in WaAPI response"}, status=500)
@@ -145,13 +160,15 @@ def get_qr_code(request):
                 status="qr"
             )
 
-            print(f"✅ Successfully created new WaapiInstance with ID {instance_id}")
+            print(
+                f"✅ Successfully created new WaapiInstance with ID {instance_id}")
 
         # ✅ 8. Debug: Ensure instance_id is valid before requesting QR code
         if not waapi_instance.instance_id:
             return JsonResponse({"error": "Instance ID is empty, cannot fetch QR code."}, status=500)
 
-        print(f"Fetching QR code for WaAPI Instance ID: {waapi_instance.instance_id}")
+        print(
+            f"Fetching QR code for WaAPI Instance ID: {waapi_instance.instance_id}")
 
         # ✅ 9. Request the QR code for this instance
         endpoint = f"instances/{waapi_instance.instance_id}/client/qr"
@@ -177,6 +194,7 @@ def get_qr_code(request):
 
 # View to check the connection status of a user's WaapiInstance
 
+
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def check_waapi_status(request):
@@ -190,7 +208,7 @@ def check_waapi_status(request):
 
             endpoint = f"instances/{waapi_instance.instance_id}/client/status"
             status_data = waapi_request(endpoint)
-            
+
             return JsonResponse({"status": status_data.get("status")})
 
         except requests.RequestException as e:
@@ -217,61 +235,25 @@ def waapi_webhook(request):
         return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 
-@api_view(["GET"])
-@permission_classes([IsAuthenticated])
-def get_instance_id(request):
-    try:
-        user = request.user
-        try:
-            # Make a request to WaAPI to get instances
-            url = f"{WAAPI_BASE_URL}/instances"
-            headers = {"Authorization": f"Bearer {API_KEY}", "accept": "application/json"}
-            response = requests.get(url, headers=headers)
-            response.raise_for_status()
-            response_data = response.json()
-            
-            # Find the instance that belongs to the current user
-            instances = response_data.get("instances", [])
-            user_instance = next((instance for instance in instances if user.username in instance["name"]), None)
+class SynthesiaVideoViewSet(viewsets.ModelViewSet):
+    queryset = SynthesiaVideo.objects.all()
+    serializer_class = SynthesiaVideoSerializer
 
-            if user_instance:
-                return JsonResponse({"instance_id": user_instance["id"]})
-            else:
-                # Find and remove the WaapiInstance for the user
-                try:
-                    user_profile = UserProfile.objects.get(user=user)
-                    waapi_instance = WaapiInstance.objects.get(user_profile=user_profile)
-                    waapi_instance.delete()
-                    return JsonResponse({"error": "Instance not found for the user. WaapiInstance removed."}, status=404)
-                except WaapiInstance.DoesNotExist:
-                    return JsonResponse({"error": "Instance not found for the user and no WaapiInstance to remove."}, status=404)
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        video = serializer.save(status='pending')
 
-        except requests.RequestException as e:
-            print(f"RequestException in get_instance_id: {e}")
-            return JsonResponse({"error": str(e)}, status=500)
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
+        # Start the Celery task to create and monitor the video
+        create_synthesia_video.delay(video.id, request.user.id)
 
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED, headers=headers)
 
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def download_and_convert_to_base64(request):
-    try:
-        # Get the download URL from the request data
-        download_url = request.data.get("mediaUrl")
-        if not download_url:
-            return JsonResponse({"error": "No download URL provided."}, status=400)
-
-        # Download the media from the URL
-        response = requests.get(download_url)
-        response.raise_for_status()
-
-        # Convert the media content to base64
-        media_content = response.content
-        base64_encoded = base64.b64encode(media_content).decode('utf-8')
-
-        return JsonResponse({"base64_code": base64_encoded})
-
-    except requests.RequestException as e:
-        print(f"RequestException in download_and_convert_to_base64: {e}")
-        return JsonResponse({"error": str(e)}, status=500)
+    @action(detail=True, methods=['get'])
+    def status(self, request, pk=None):
+        from datetime import datetime as dt
+        print("DATE:", dt.now().time())
+        video = self.get_object()
+        serializer = SynthesiaVideoStatusSerializer(video)
+        return Response(serializer.data)

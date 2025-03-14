@@ -204,3 +204,7 @@ CELERY_CACHE_BACKEND = 'default'
 
 # Celery Beat Settings
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+
+
+# Synthesia API Key
+SYNTHESIA_API_KEY='b6a56a9751d491c72cd0db4b6d632cea'

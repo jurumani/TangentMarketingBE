@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Campaign, CampaignMessage, CampaignContact, WaapiInstance
+from .models import Campaign, CampaignMessage, CampaignContact, WaapiInstance, SynthesiaVideo
 
 class CampaignMessageInline(admin.TabularInline):
     model = CampaignMessage
@@ -40,3 +40,10 @@ class CampaignContactAdmin(admin.ModelAdmin):
 class WaapiInstanceAdmin(admin.ModelAdmin):
     list_display = ('user_profile', 'instance_id', 'status', 'created_at', 'updated_at')
     search_fields = ('user_profile__user__username', 'instance_id')
+
+@admin.register(SynthesiaVideo)
+class SynthesiaVideoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'created_at', 'updated_at')
+    search_fields = ('title', 'description')
+    readonly_fields = ('created_at', 'updated_at')
+
