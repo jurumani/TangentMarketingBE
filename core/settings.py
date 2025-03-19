@@ -135,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Johannesburg'
 USE_I18N = True
 USE_TZ = True
 STATIC_URL = 'static/'
@@ -207,4 +207,9 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
 
 
 # Synthesia API Key
-SYNTHESIA_API_KEY='b6a56a9751d491c72cd0db4b6d632cea'
+SYNTHESIA_API_KEY = os.getenv('SYNTHESIA_API_KEY')
+
+
+# Business Hours
+OPENING_HOUR = "08:00"
+CLOSING_HOUR = "17:00"

@@ -25,7 +25,6 @@ from .serializers import SynthesiaVideoSerializer, SynthesiaVideoStatusSerialize
 
 # Ensure you have WAAPI_BASE_URL and API_KEY in your Django settings
 WAAPI_BASE_URL = settings.WAAPI_BASE_URL
-print(WAAPI_BASE_URL)
 API_KEY = settings.WAAPI_API_KEY
 
 # View to create a new instance for a user if one doesn't exist
@@ -236,7 +235,7 @@ def waapi_webhook(request):
 
 
 class SynthesiaVideoViewSet(viewsets.ModelViewSet):
-    queryset = SynthesiaVideo.objects.all()
+    queryset = SynthesiaVideo.objects.all().order_by('-id')
     serializer_class = SynthesiaVideoSerializer
 
     def create(self, request, *args, **kwargs):
@@ -252,8 +251,6 @@ class SynthesiaVideoViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'])
     def status(self, request, pk=None):
-        from datetime import datetime as dt
-        print("DATE:", dt.now().time())
         video = self.get_object()
         serializer = SynthesiaVideoStatusSerializer(video)
         return Response(serializer.data)

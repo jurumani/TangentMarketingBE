@@ -80,6 +80,7 @@ class SynthesiaVideo(models.Model):
         ('in_progress', 'In Progress'),  # Synthesia status
         ('complete', 'Complete'),  # Synthesia status
         ('sent', 'Sent'),  # Sent via WhatsApp
+        ('scheduled', 'scheduled'),  # Scheduled to be Sent via WhatsApp during business hours
         ('failed', 'Failed'),  # Any error occurred
     )
 
@@ -117,8 +118,7 @@ class SynthesiaVideo(models.Model):
     error_message = models.TextField(blank=True, null=True)
 
     # Added for frontend notification
-    webhook_url = models.URLField(
-        null=True, blank=True, help_text="URL to notify when video is ready")
+    scheduled_time = models.DateTimeField(null=True, blank=True)
     is_ready_for_whatsapp = models.BooleanField(
         default=False, help_text="Flag indicating video is ready to send via WhatsApp")
     whatsapp_sent_at = models.DateTimeField(null=True, blank=True)
@@ -185,5 +185,15 @@ class SynthesiaVideo(models.Model):
         """
         self.status = 'sent'
         self.whatsapp_sent_at = dt.now()
+        self.save()
+
+    def schedule_video(self, scheduled_time):
+        """
+        Schedule the video to be sent at a specific time.
+        """
+        if self.scheduled_time:
+            raise ValueError("Video is already scheduled.")
+        self.scheduled_time = scheduled_time
+        self.status = 'scheduled'
         self.save()
 
