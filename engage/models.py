@@ -1,6 +1,15 @@
+from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
+import logging
+from django.conf import settings
+import base64
+import hmac
+import hashlib
 from django.db import models
 from datahub.models import Contact  # Assuming Contact is in datahub app
 from datetime import datetime as dt
+from cryptography.fernet import Fernet
+
+logger = logging.getLogger(__name__)
 
 
 class Campaign(models.Model):
@@ -80,7 +89,8 @@ class SynthesiaVideo(models.Model):
         ('in_progress', 'In Progress'),  # Synthesia status
         ('complete', 'Complete'),  # Synthesia status
         ('sent', 'Sent'),  # Sent via WhatsApp
-        ('scheduled', 'scheduled'),  # Scheduled to be Sent via WhatsApp during business hours
+        # Scheduled to be Sent via WhatsApp during business hours
+        ('scheduled', 'scheduled'),
         ('failed', 'Failed'),  # Any error occurred
     )
 
@@ -109,6 +119,11 @@ class SynthesiaVideo(models.Model):
     synthesia_last_updated_at = models.BigIntegerField(null=True, blank=True)
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default='pending')
+
+    # Add these new fields for encrypted storage
+    encrypted_download_url = models.BinaryField(null=True, blank=True)
+    encrypted_thumbnail_image = models.BinaryField(null=True, blank=True)
+    encrypted_thumbnail_gif = models.BinaryField(null=True, blank=True)
 
     # Response data
     download_url = models.URLField(null=True, blank=True)
@@ -161,7 +176,11 @@ class SynthesiaVideo(models.Model):
             self.synthesia_last_updated_at = response_data.get('lastUpdatedAt')
 
         if response_data.get('download'):
-            self.download_url = response_data.get('download')
+            # Encrypt the download URL
+            download_url = response_data.get('download')
+            self.encrypted_download_url = self._encrypt_url(download_url)
+            # Store a non-sensitive version for reference/display
+            self.download_url = self._sanitize_url(download_url)
 
         if response_data.get('duration'):
             self.duration = response_data.get('duration')
@@ -169,15 +188,249 @@ class SynthesiaVideo(models.Model):
         if response_data.get('thumbnail'):
             thumbnail = response_data.get('thumbnail', {})
             if thumbnail.get('image'):
-                self.thumbnail_image = thumbnail.get('image')
+                image_url = thumbnail.get('image')
+                self.encrypted_thumbnail_image = self._encrypt_url(image_url)
+                self.thumbnail_image = self._sanitize_url(image_url)
+
             if thumbnail.get('gif'):
-                self.thumbnail_gif = thumbnail.get('gif')
+                gif_url = thumbnail.get('gif')
+                self.encrypted_thumbnail_gif = self._encrypt_url(gif_url)
+                self.thumbnail_gif = self._sanitize_url(gif_url)
 
         # Set is_ready_for_whatsapp when video is complete and has download URL
-        if response_data.get('status') == 'complete' and response_data.get('download'):
+        if response_data.get('status') == 'complete' and self.encrypted_download_url:
             self.is_ready_for_whatsapp = True
 
         self.save()
+
+    def _encrypt_url(self, url):
+        """
+        Encrypt a URL containing sensitive information
+
+        Args:
+            url: URL with sensitive information
+
+        Returns:
+            Encrypted URL as binary data
+        """
+        if not url:
+            return None
+
+        try:
+            # Make sure the key is in the correct format
+            key = settings.URL_ENCRYPTION_KEY
+            if isinstance(key, str):
+                key = key.encode()
+
+            f = Fernet(key)
+
+            # Encrypt the URL
+            encrypted_url = f.encrypt(url.encode('utf-8'))
+            return encrypted_url
+        except Exception as e:
+            # Log the error
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Encryption error: {e}")
+
+            # Return None or handle the error appropriately
+            return None
+
+    def _decrypt_url(self, encrypted_url):
+        """
+        Decrypt an encrypted URL
+
+        Args:
+            encrypted_url: Encrypted URL binary data
+
+        Returns:
+            Original URL string
+        """
+        try:
+            # Make sure the key is in the correct format
+            key = settings.URL_ENCRYPTION_KEY
+            if isinstance(key, str):
+                key = key.encode()
+
+            f = Fernet(key)
+
+            # Encrypt the URL
+            decrypted_url = f.decrypt(encrypted_url).decode('utf-8')
+            return decrypted_url
+        except Exception as e:
+            # Log the error
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Encryption error: {e}")
+
+            # Return None or handle the error appropriately
+            return None
+
+    def _sanitize_url(self, url):
+        """
+        Create a sanitized version of the URL for reference/display
+
+        Args:
+            url: Original URL with sensitive information
+
+        Returns:
+            URL without sensitive information
+        """
+        if not url:
+            return None
+
+        from urllib.parse import urlparse, urlunparse, parse_qs, urlencode
+
+        # Parse the URL
+        parsed_url = urlparse(url)
+
+        # Remove query parameters that might contain credentials
+        query_params = parse_qs(parsed_url.query)
+        filtered_params = {k: v for k, v in query_params.items()
+                           if not k.lower() in ['accesskey', 'secretkey', 'awsaccesskeyid',
+                                                'x-amz-security-token', 'sessiontoken']}
+
+        # Reconstruct the URL without sensitive parameters
+        sanitized_url = urlunparse((
+            parsed_url.scheme,
+            parsed_url.netloc,
+            parsed_url.path,
+            parsed_url.params,
+            urlencode(filtered_params, doseq=True),
+            parsed_url.fragment
+        ))
+
+        return sanitized_url
+
+    def _generate_hash(self, url, expiry_time=3600):
+        """
+        Generate a secure hash for a URL with expiry
+
+        Args:
+            url: The URL to hash (string or bytes)
+            expiry_time: Time in seconds for URL validity (default 1 hour)
+
+        Returns:
+            Tuple of (hash, expiry_timestamp)
+        """
+        # Get a secret key from settings or define one
+        secret_key = getattr(settings, 'URL_HASH_SECRET_KEY',
+                             'your-default-secret-key')
+
+        # Generate expiry timestamp
+        expires = int(dt.now().timestamp()) + expiry_time
+
+        # Ensure URL is a string
+        if isinstance(url, bytes):
+            url = url.decode('utf-8')
+
+        # Create the string to hash
+        to_hash = f"{url}|{expires}|{self.id}"
+
+        # Generate HMAC hash
+        hash_obj = hmac.new(
+            secret_key.encode('utf-8'),
+            to_hash.encode('utf-8'),
+            hashlib.sha256
+        )
+
+        # Return the base64 encoded hash and expiry
+        hash_value = base64.urlsafe_b64encode(
+            hash_obj.digest()).decode('utf-8').rstrip('=')
+        return hash_value, expires
+
+    def _add_hash_to_url(self, url, expiry_time=3600):
+        """
+        Add hash and expiry parameters to URL
+
+        Args:
+            url: The original URL (string or bytes)
+            expiry_time: Time in seconds for URL validity
+
+        Returns:
+            URL with hash and expiry parameters added
+        """
+        if not url:
+            return None
+
+        # Ensure URL is a string
+        if isinstance(url, bytes):
+            url = url.decode('utf-8')
+
+        hash_value, expires = self._generate_hash(url, expiry_time)
+
+        # Parse the URL
+        parsed_url = urlparse(url)
+        query_params = parse_qs(parsed_url.query)
+
+        # Add our parameters
+        query_params['hash'] = [hash_value]
+        query_params['expires'] = [str(expires)]
+        query_params['video_id'] = [str(self.id)]
+
+        # Reconstruct the URL
+        new_query = urlencode(query_params, doseq=True)
+        new_url = urlunparse((
+            parsed_url.scheme,
+            parsed_url.netloc,
+            parsed_url.path,
+            parsed_url.params,
+            new_query,
+            parsed_url.fragment
+        ))
+
+        return new_url
+
+    def get_secure_download_url(self, expiry_time=3600):
+        """
+        Get download URL with security hash
+
+        Args:
+            expiry_time: Time in seconds for URL validity (default 1 hour)
+
+        Returns:
+            Secured download URL
+        """
+        if not self.encrypted_download_url:
+            return None
+
+        # Decrypt the original URL
+        original_url = self._decrypt_url(self.encrypted_download_url)
+
+        # Add hash for additional security
+        return self._add_hash_to_url(original_url, expiry_time)
+
+    def get_secure_thumbnail_image(self, expiry_time=3600):
+        """
+        Get thumbnail image URL with security hash
+
+        Args:
+            expiry_time: Time in seconds for URL validity (default 1 hour)
+
+        Returns:
+            Secured thumbnail image URL
+        """
+        if not self.encrypted_thumbnail_image:
+            return None
+
+        original_url = self._decrypt_url(self.encrypted_thumbnail_image)
+        return self._add_hash_to_url(original_url, expiry_time)
+
+    def get_secure_thumbnail_gif(self, expiry_time=3600):
+        """
+        Get thumbnail GIF URL with security hash
+
+        Args:
+            expiry_time: Time in seconds for URL validity (default 1 hour)
+
+        Returns:
+            Secured thumbnail GIF URL
+        """
+        if not self.encrypted_thumbnail_gif:
+            return None
+
+        original_url = self._decrypt_url(self.encrypted_thumbnail_gif)
+        return self._add_hash_to_url(original_url, expiry_time)
 
     def mark_as_sent(self):
         """
@@ -197,3 +450,44 @@ class SynthesiaVideo(models.Model):
         self.status = 'scheduled'
         self.save()
 
+    @staticmethod
+    def verify_url_hash(url, hash_value, expires, video_id):
+        """
+        Verify if a URL hash is valid
+
+        Args:
+            url: The original URL (without hash parameters)
+            hash_value: The hash to verify
+            expires: Expiry timestamp
+            video_id: ID of the video
+
+        Returns:
+            Boolean indicating if hash is valid and not expired
+        """
+        # Check if URL has expired
+        current_time = int(dt.now().timestamp())
+        if current_time > int(expires):
+            return False
+
+        # Get video object
+        try:
+            SynthesiaVideo.objects.get(id=video_id)
+        except SynthesiaVideo.DoesNotExist:
+            return False
+
+        # Recreate the hash
+        secret_key = getattr(settings, 'URL_HASH_SECRET_KEY',
+                             'your-default-secret-key')
+        to_hash = f"{url}|{expires}|{video_id}"
+
+        # Generate HMAC hash
+        hash_obj = hmac.new(
+            secret_key.encode('utf-8'),
+            to_hash.encode('utf-8'),
+            hashlib.sha256
+        )
+
+        # Check if hashes match
+        expected_hash = base64.urlsafe_b64encode(
+            hash_obj.digest()).decode('utf-8').rstrip('=')
+        return hmac.compare_digest(expected_hash, hash_value)

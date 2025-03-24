@@ -5,7 +5,6 @@ from django.conf import settings
 import requests
 from django.utils import timezone
 
-from engage.serializers import SynthesiaVideoSerializer
 from .models import SynthesiaVideo, WaapiInstance
 from django.contrib.auth.decorators import login_required
 # Assuming UserProfile is where the link to WaapiInstance is stored

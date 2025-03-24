@@ -13,6 +13,9 @@ ENVIRONMENT = 'development'  # Change this to 'production' for production settin
 env_file = '.env.development' if ENVIRONMENT == 'development' else '.env.production'
 load_dotenv(dotenv_path=env_file)
 
+# SECURITY WARNING: keep the secret key used in production secret!
+URL_HASH_SECRET_KEY = os.getenv('URL_HASH_SECRET_KEY', 'your-default-secret-key')
+
 #Lusha Settings
 LUSHA_API_KEY = os.getenv('LUSHA_API_KEY')
 LUSHA_BASE_URL = os.getenv('LUSHA_BASE_URL')
@@ -23,7 +26,7 @@ WAAPI_BASE_URL = os.getenv('WAAPI_BASE_URL')
 WAAPI_INSTANCE_ID = os.getenv('WAAPI_INSTANCE_ID')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DEBUG', 'False')
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 ALLOWED_HOSTS = ['c5ea-169-0-26-81.ngrok-free.app', '127.0.0.1', '192.168.8.213', '7f2c-165-0-142-182.ngrok-free.app']
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:8100')  # Replace this with your Vue app's URL
@@ -86,6 +89,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'engage.middleware.SecureURLMiddleware'
 ]
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -213,3 +217,7 @@ SYNTHESIA_API_KEY = os.getenv('SYNTHESIA_API_KEY')
 # Business Hours
 OPENING_HOUR = "08:00"
 CLOSING_HOUR = "17:00"
+
+# URL Encryption Key
+# Either generate a key or use an environment variable
+URL_ENCRYPTION_KEY = os.environ.get('URL_ENCRYPTION_KEY')

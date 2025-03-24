@@ -153,11 +153,11 @@ def check_synthesia_video_status(video_id, user_id):
     except SynthesiaVideo.DoesNotExist:
         logger.error(f"SynthesiaVideo with ID {video_id} not found")
     except requests.exceptions.RequestException as e:
-        logger.error(f"Error checking Synthesia video status: {str(e)}, repsonse: {response}")
+        logger.error(f"Error checking Synthesia video status: {str(e)}")
 
     except Exception as e:
         logger.error(
-            f"Unexpected error checking Synthesia video status: {str(e)}, repsonse: {response}")
+            f"Unexpected error checking Synthesia video status: {str(e)}")
 
 
 @shared_task
@@ -173,10 +173,10 @@ def send_synthesia_video_via_whatsapp(video_id, user_id):
         video = SynthesiaVideo.objects.get(id=video_id)
 
         # Skip if no download URL
-        if not video.download_url:
+        if not video.get_secure_download_url():
             logger.error(f"Video: {video} has no download URL")
             return
-
+        
         # Get current time with timezone awareness
         current_time = dt.now(pytz.timezone(settings.TIME_ZONE))
         today = current_time.date()
@@ -233,7 +233,7 @@ def send_synthesia_video_via_whatsapp(video_id, user_id):
         instance_id = user_instance["id"]
 
         # Download the media from the URL
-        response = requests.get(video.download_url)
+        response = requests.get(video.get_secure_download_url())
         response.raise_for_status()
 
         # Convert the media content to base64

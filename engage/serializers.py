@@ -8,15 +8,24 @@ class SynthesiaVideoSerializer(serializers.ModelSerializer):
     scriptText = serializers.CharField(source='script_text')
     avatarSettings = serializers.JSONField(source='avatar_settings')
     backgroundSettings = serializers.JSONField(source='background_settings')
+    secure_download_url = serializers.SerializerMethodField()
+    secure_thumbnail_image = serializers.SerializerMethodField()
+    secure_thumbnail_gif = serializers.SerializerMethodField()
 
     class Meta:
         model = SynthesiaVideo
         fields = [
             'id', 'synthesia_id', 'title', 'description', 'visibility', 'aspectRatio', 'test',
             'download_url', 'scheduled_time', 'scriptText', 'avatar', 'avatarSettings',
-            'background', 'backgroundSettings', 'whatsapp_number', 'status', 'created_at'
+            'background', 'backgroundSettings', 'whatsapp_number', 'status', 'created_at', 
+            'secure_download_url', 'secure_thumbnail_image', 'secure_thumbnail_gif'
         ]
-        read_only_fields = ['id', 'status', 'created_at']
+        read_only_fields = [
+            'id', 'status', 'created_at',
+            'secure_download_url',
+            'secure_thumbnail_image',
+            'secure_thumbnail_gif'
+        ]
 
     def validate(self, data):
         # Ensure avatar_settings has correct structure if provided
@@ -54,13 +63,35 @@ class SynthesiaVideoSerializer(serializers.ModelSerializer):
 
         return super().to_internal_value(data)
 
+    def get_secure_download_url(self, obj):
+        return obj.get_secure_download_url()
+
+    def get_secure_thumbnail_image(self, obj):
+        return obj.get_secure_thumbnail_image()
+
+    def get_secure_thumbnail_gif(self, obj):
+        return obj.get_secure_thumbnail_gif()
+
 
 class SynthesiaVideoStatusSerializer(serializers.ModelSerializer):
+    secure_download_url = serializers.SerializerMethodField()
+    secure_thumbnail_image = serializers.SerializerMethodField()
+    secure_thumbnail_gif = serializers.SerializerMethodField()
+
     class Meta:
         model = SynthesiaVideo
         fields = [
-            'id', 'synthesia_id', 'title', 'status', 'created_at', 'updated_at',
-            'synthesia_created_at', 'synthesia_last_updated_at', 'download_url',
-            'scheduled_time', 'duration', 'thumbnail_image', 'whatsapp_sent_at'
+            'id', 'status', 'secure_download_url',
+            'secure_thumbnail_image', 'secure_thumbnail_gif',
+            'duration', 'error_message', 'is_ready_for_whatsapp',
+            'scheduled_time', 'whatsapp_sent_at'
         ]
-        read_only_fields = fields
+
+    def get_secure_download_url(self, obj):
+        return obj.get_secure_download_url()
+
+    def get_secure_thumbnail_image(self, obj):
+        return obj.get_secure_thumbnail_image()
+
+    def get_secure_thumbnail_gif(self, obj):
+        return obj.get_secure_thumbnail_gif()
