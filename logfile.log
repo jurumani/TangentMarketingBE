@@ -1,0 +1,728 @@
+Starting migrations...
+Traceback (most recent call last):
+  File "/app/manage.py", line 22, in <module>
+    main()
+  File "/app/manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python3.12/site-packages/django/core/management/__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python3.12/site-packages/django/core/management/__init__.py", line 416, in execute
+    django.setup()
+  File "/usr/local/lib/python3.12/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.12/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/apps/config.py", line 193, in create
+    import_module(entry)
+  File "/usr/local/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/usr/local/lib/python3.12/site-packages/drf_yasg/__init__.py", line 2, in <module>
+    from pkg_resources import DistributionNotFound, get_distribution
+ModuleNotFoundError: No module named 'pkg_resources'
+Applying migrations...
+Traceback (most recent call last):
+  File "/app/manage.py", line 22, in <module>
+    main()
+  File "/app/manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python3.12/site-packages/django/core/management/__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python3.12/site-packages/django/core/management/__init__.py", line 416, in execute
+    django.setup()
+  File "/usr/local/lib/python3.12/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.12/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/apps/config.py", line 193, in create
+    import_module(entry)
+  File "/usr/local/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/usr/local/lib/python3.12/site-packages/drf_yasg/__init__.py", line 2, in <module>
+    from pkg_resources import DistributionNotFound, get_distribution
+ModuleNotFoundError: No module named 'pkg_resources'
+Starting server...
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 126, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/local/lib/python3.12/site-packages/django/utils/autoreload.py", line 87, in raise_last_exception
+    raise _exception[1]
+  File "/usr/local/lib/python3.12/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+  File "/usr/local/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.12/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/apps/config.py", line 193, in create
+    import_module(entry)
+  File "/usr/local/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/usr/local/lib/python3.12/site-packages/drf_yasg/__init__.py", line 2, in <module>
+    from pkg_resources import DistributionNotFound, get_distribution
+ModuleNotFoundError: No module named 'pkg_resources'
+Starting migrations...
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg as Database
+ModuleNotFoundError: No module named 'psycopg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 27, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/manage.py", line 22, in <module>
+    main()
+  File "/app/manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/__init__.py", line 416, in execute
+    django.setup()
+  File "/usr/local/lib/python3.11/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.11/site-packages/django/apps/registry.py", line 116, in populate
+    app_config.import_models()
+  File "/usr/local/lib/python3.11/site-packages/django/apps/config.py", line 269, in import_models
+    self.models_module = import_module(models_module_name)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/models.py", line 5, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/base_user.py", line 40, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 143, in __new__
+    new_class.add_to_class("_meta", Options(meta, app_label))
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 371, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/options.py", line 231, in contribute_to_class
+    self.db_table, connection.ops.max_name_length()
+                   ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/connection.py", line 15, in __getattr__
+    return getattr(self._connections[self._alias], item)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/connection.py", line 62, in __getitem__
+    conn = self.create_connection(alias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 193, in create_connection
+    backend = load_backend(db["ENGINE"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 113, in load_backend
+    return import_module("%s.base" % backend_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 or psycopg module")
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 or psycopg module
+Applying migrations...
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg as Database
+ModuleNotFoundError: No module named 'psycopg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 27, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/manage.py", line 22, in <module>
+    main()
+  File "/app/manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/__init__.py", line 416, in execute
+    django.setup()
+  File "/usr/local/lib/python3.11/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.11/site-packages/django/apps/registry.py", line 116, in populate
+    app_config.import_models()
+  File "/usr/local/lib/python3.11/site-packages/django/apps/config.py", line 269, in import_models
+    self.models_module = import_module(models_module_name)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/models.py", line 5, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/base_user.py", line 40, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 143, in __new__
+    new_class.add_to_class("_meta", Options(meta, app_label))
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 371, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/options.py", line 231, in contribute_to_class
+    self.db_table, connection.ops.max_name_length()
+                   ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/connection.py", line 15, in __getattr__
+    return getattr(self._connections[self._alias], item)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/connection.py", line 62, in __getitem__
+    conn = self.create_connection(alias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 193, in create_connection
+    backend = load_backend(db["ENGINE"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 113, in load_backend
+    return import_module("%s.base" % backend_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 or psycopg module")
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 or psycopg module
+Starting server...
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 25, in <module>
+    import psycopg as Database
+ModuleNotFoundError: No module named 'psycopg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 27, in <module>
+    import psycopg2 as Database
+ModuleNotFoundError: No module named 'psycopg2'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.11/threading.py", line 982, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/commands/runserver.py", line 126, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py", line 87, in raise_last_exception
+    raise _exception[1]
+  File "/usr/local/lib/python3.11/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+  File "/usr/local/lib/python3.11/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.11/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.11/site-packages/django/apps/registry.py", line 116, in populate
+    app_config.import_models()
+  File "/usr/local/lib/python3.11/site-packages/django/apps/config.py", line 269, in import_models
+    self.models_module = import_module(models_module_name)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/models.py", line 5, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "/usr/local/lib/python3.11/site-packages/django/contrib/auth/base_user.py", line 40, in <module>
+    class AbstractBaseUser(models.Model):
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 143, in __new__
+    new_class.add_to_class("_meta", Options(meta, app_label))
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/base.py", line 371, in add_to_class
+    value.contribute_to_class(cls, name)
+  File "/usr/local/lib/python3.11/site-packages/django/db/models/options.py", line 231, in contribute_to_class
+    self.db_table, connection.ops.max_name_length()
+                   ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/connection.py", line 15, in __getattr__
+    return getattr(self._connections[self._alias], item)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/utils/connection.py", line 62, in __getitem__
+    conn = self.create_connection(alias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 193, in create_connection
+    backend = load_backend(db["ENGINE"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/utils.py", line 113, in load_backend
+    return import_module("%s.base" % backend_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 29, in <module>
+    raise ImproperlyConfigured("Error loading psycopg2 or psycopg module")
+django.core.exceptions.ImproperlyConfigured: Error loading psycopg2 or psycopg module
+Starting migrations...
+No changes detected
+Applying migrations...
+Operations to perform:
+  Apply all migrations: account, admin, auth, authtoken, contenttypes, datahub, django_celery_beat, engage, messaging, sessions, socialaccount, users
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying account.0001_initial... OK
+  Applying account.0002_email_max_length... OK
+  Applying account.0003_alter_emailaddress_create_unique_verified_email... OK
+  Applying account.0004_alter_emailaddress_drop_unique_email... OK
+  Applying account.0005_emailaddress_idx_upper_email... OK
+  Applying account.0006_emailaddress_lower... OK
+  Applying account.0007_emailaddress_idx_email... OK
+  Applying account.0008_emailaddress_unique_primary_email_fixup... OK
+  Applying account.0009_emailaddress_unique_primary_email... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying authtoken.0001_initial... OK
+  Applying authtoken.0002_auto_20160226_1747... OK
+  Applying authtoken.0003_tokenproxy... OK
+  Applying authtoken.0004_alter_tokenproxy_options... OK
+  Applying datahub.0001_initial... OK
+  Applying datahub.0002_remove_mxrecord_mail_server_remove_mxrecord_priority_and_more... OK
+  Applying datahub.0003_alter_company_options_remove_company_domain_and_more... OK
+  Applying datahub.0004_alter_domain_company... OK
+  Applying datahub.0005_domain_last_checked... OK
+  Applying datahub.0006_service... OK
+  Applying datahub.0007_domain_services... OK
+  Applying datahub.0008_servicepattern... OK
+  Applying datahub.0009_contact_linkedin_profile... OK
+  Applying datahub.0010_company_created_at_company_owner_company_visibility_and_more... OK
+  Applying datahub.0011_remove_company_owner_remove_contact_owner_and_more... OK
+  Applying datahub.0012_contact_lusha_contact_id_alter_contact_email_address_and_more... OK
+  Applying django_celery_beat.0001_initial... OK
+  Applying django_celery_beat.0002_auto_20161118_0346... OK
+  Applying django_celery_beat.0003_auto_20161209_0049... OK
+  Applying django_celery_beat.0004_auto_20170221_0000... OK
+  Applying django_celery_beat.0005_add_solarschedule_events_choices... OK
+  Applying django_celery_beat.0006_auto_20180322_0932... OK
+  Applying django_celery_beat.0007_auto_20180521_0826... OK
+  Applying django_celery_beat.0008_auto_20180914_1922... OK
+  Applying django_celery_beat.0006_auto_20180210_1226... OK
+  Applying django_celery_beat.0006_periodictask_priority... OK
+  Applying django_celery_beat.0009_periodictask_headers... OK
+  Applying django_celery_beat.0010_auto_20190429_0326... OK
+  Applying django_celery_beat.0011_auto_20190508_0153... OK
+  Applying django_celery_beat.0012_periodictask_expire_seconds... OK
+  Applying django_celery_beat.0013_auto_20200609_0727... OK
+  Applying django_celery_beat.0014_remove_clockedschedule_enabled... OK
+  Applying django_celery_beat.0015_edit_solarschedule_events_choices... OK
+  Applying django_celery_beat.0016_alter_crontabschedule_timezone... OK
+  Applying django_celery_beat.0017_alter_crontabschedule_month_of_year... OK
+  Applying django_celery_beat.0018_improve_crontab_helptext... OK
+  Applying django_celery_beat.0019_alter_periodictasks_options... OK
+  Applying users.0001_initial... OK
+  Applying users.0002_remove_userprofile_location... OK
+  Applying users.0003_alter_userprofile_profile_picture... OK
+  Applying users.0004_alter_userprofile_profile_picture... OK
+  Applying users.0005_company_userprofile_company... OK
+  Applying users.0006_rename_company_usercompany_alter_usercompany_options... OK
+  Applying users.0007_userprofile_personal_companies_and_more... OK
+  Applying engage.0001_initial... OK
+  Applying engage.0002_rename_body_campaignmessage_template... OK
+  Applying engage.0003_waapiinstance... OK
+  Applying users.0008_userprofile_mobile_phone_userprofile_waapi_instance... OK
+  Applying users.0009_remove_userprofile_waapi_instance... OK
+  Applying engage.0004_remove_waapiinstance_user_waapiinstance_user_profile... OK
+  Applying engage.0005_synthesiavideo... OK
+  Applying engage.0006_alter_synthesiavideo_status... OK
+  Applying engage.0007_remove_synthesiavideo_webhook_url_and_more... OK
+  Applying engage.0008_synthesiavideo_encrypted_download_url_and_more... OK
+  Applying messaging.0001_initial... OK
+  Applying messaging.0002_message_is_system_message_alter_message_sender... OK
+  Applying messaging.0003_message_actions_message_message_type... OK
+  Applying sessions.0001_initial... OK
+  Applying socialaccount.0001_initial... OK
+  Applying socialaccount.0002_token_max_lengths... OK
+  Applying socialaccount.0003_extra_data_default_dict... OK
+  Applying socialaccount.0004_app_provider_id_settings... OK
+  Applying socialaccount.0005_socialtoken_nullable_app... OK
+  Applying socialaccount.0006_alter_socialaccount_extra_data... OK
+Starting server...
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 26, 2025 - 12:00:28
+Django version 5.1, using settings 'core.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+[26/Mar/2025 12:00:38] "GET /admin/datahub/contact/?owners__username=Kwakhona HTTP/1.1" 302 0
+[26/Mar/2025 12:00:38] "GET /admin/login/?next=/admin/datahub/contact/%3Fowners__username%3DKwakhona HTTP/1.1" 200 4251
+[26/Mar/2025 12:00:39] "GET /static/admin/css/base.css HTTP/1.1" 200 22092
+[26/Mar/2025 12:00:39] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+[26/Mar/2025 12:00:39] "GET /static/admin/css/login.css HTTP/1.1" 200 951
+[26/Mar/2025 12:00:39] "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+[26/Mar/2025 12:00:39] "GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+[26/Mar/2025 12:00:39] "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+[26/Mar/2025 12:00:39] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+[26/Mar/2025 12:41:24] "POST /admin/login/?next=/admin/datahub/contact/%3Fowners__username%3DKwakhona HTTP/1.1" 200 4419
+[26/Mar/2025 12:41:24] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[26/Mar/2025 12:41:24] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[26/Mar/2025 12:41:24] "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[26/Mar/2025 12:41:24] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[26/Mar/2025 12:41:24] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[26/Mar/2025 12:41:24] "GET /static/admin/css/login.css HTTP/1.1" 304 0
+[26/Mar/2025 12:41:24] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[26/Mar/2025 13:14:26] "GET /admin/ HTTP/1.1" 302 0
+[26/Mar/2025 13:14:26] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4163
+[26/Mar/2025 13:14:26] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[26/Mar/2025 13:14:26] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[26/Mar/2025 13:14:26] "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[26/Mar/2025 13:14:26] "GET /static/admin/css/login.css HTTP/1.1" 304 0
+[26/Mar/2025 13:14:26] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[26/Mar/2025 13:14:26] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[26/Mar/2025 13:14:26] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[26/Mar/2025 13:14:42] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4331
+[26/Mar/2025 13:14:55] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4327
+[26/Mar/2025 13:15:29] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4327
+[26/Mar/2025 13:17:36] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[26/Mar/2025 13:17:36] "GET /admin/ HTTP/1.1" 200 23860
+[26/Mar/2025 13:17:36] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+[26/Mar/2025 13:17:36] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[26/Mar/2025 13:17:36] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[26/Mar/2025 13:17:42] "GET /admin/auth/user/ HTTP/1.1" 200 24365
+[26/Mar/2025 13:17:42] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+[26/Mar/2025 13:17:42] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[26/Mar/2025 13:17:42] "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+[26/Mar/2025 13:17:42] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+[26/Mar/2025 13:17:42] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+[26/Mar/2025 13:17:42] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[26/Mar/2025 13:17:42] "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+[26/Mar/2025 13:17:42] "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+[26/Mar/2025 13:17:42] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+[26/Mar/2025 13:17:42] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[26/Mar/2025 13:17:42] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[26/Mar/2025 13:17:42] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:17:42] "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+[26/Mar/2025 13:17:42] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[26/Mar/2025 13:17:42] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+[26/Mar/2025 13:17:42] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[26/Mar/2025 13:17:46] "GET /admin/datahub/company/ HTTP/1.1" 200 22185
+[26/Mar/2025 13:17:46] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:17:47] "GET /admin/auth/user/ HTTP/1.1" 200 24365
+/app/core/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 26, 2025 - 13:35:39
+Django version 5.1, using settings 'core.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/app/core/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 26, 2025 - 13:39:16
+Django version 5.1, using settings 'core.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+/app/core/settings.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 26, 2025 - 13:40:29
+Django version 5.1, using settings 'core.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+[26/Mar/2025 13:40:55] "GET /admin/auth/user/ HTTP/1.1" 200 24365
+[26/Mar/2025 13:40:55] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:40:55] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+[26/Mar/2025 13:40:55] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[26/Mar/2025 13:43:11] "GET /admin/auth/user/ HTTP/1.1" 200 24365
+[26/Mar/2025 13:43:11] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:43:12] "GET /admin/auth/user/ HTTP/1.1" 200 24365
+[26/Mar/2025 13:43:12] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:43:14] "GET /admin/datahub/contact/ HTTP/1.1" 200 22183
+[26/Mar/2025 13:43:15] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:43:23] "GET /admin/users/userprofile/ HTTP/1.1" 200 21764
+[26/Mar/2025 13:43:23] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:43:24] "GET /admin/users/userprofile/7/change/ HTTP/1.1" 200 29443
+[26/Mar/2025 13:43:24] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+[26/Mar/2025 13:43:24] "GET /static/admin/css/forms.css HTTP/1.1" 200 8710
+[26/Mar/2025 13:43:24] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:43:24] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[26/Mar/2025 13:43:24] "GET /static/admin/css/widgets.css HTTP/1.1" 200 11564
+[26/Mar/2025 13:43:24] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+[26/Mar/2025 13:43:24] "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+[26/Mar/2025 13:43:26] "GET /admin/users/userprofile/ HTTP/1.1" 200 21764
+[26/Mar/2025 13:43:38] "POST /admin/users/userprofile/ HTTP/1.1" 200 20529
+[26/Mar/2025 13:43:38] "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+[26/Mar/2025 13:43:39] "POST /admin/users/userprofile/ HTTP/1.1" 302 0
+[26/Mar/2025 13:43:39] "GET /admin/users/userprofile/ HTTP/1.1" 200 20617
+[26/Mar/2025 13:43:39] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:43:53] "GET /admin/auth/user/ HTTP/1.1" 200 24365
+[26/Mar/2025 13:43:53] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 13:43:57] "POST /admin/auth/user/ HTTP/1.1" 200 20590
+[26/Mar/2025 13:43:58] "POST /admin/auth/user/ HTTP/1.1" 302 0
+[26/Mar/2025 13:43:58] "GET /admin/auth/user/ HTTP/1.1" 302 0
+[26/Mar/2025 13:43:58] "GET /admin/login/?next=/admin/auth/user/ HTTP/1.1" 200 4317
+[26/Mar/2025 13:43:58] "GET /static/admin/css/login.css HTTP/1.1" 304 0
+[26/Mar/2025 13:54:44] "GET /admin/login/?next=/admin/auth/user/ HTTP/1.1" 200 4183
+[26/Mar/2025 13:54:45] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[26/Mar/2025 13:54:45] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[26/Mar/2025 13:54:45] "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[26/Mar/2025 13:54:45] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[26/Mar/2025 13:54:45] "GET /static/admin/css/login.css HTTP/1.1" 304 0
+[26/Mar/2025 13:54:45] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[26/Mar/2025 13:54:45] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[26/Mar/2025 13:54:51] "POST /admin/login/?next=/admin/auth/user/ HTTP/1.1" 200 4347
+[26/Mar/2025 14:15:25] "OPTIONS /datahub/services/ HTTP/1.1" 200 0
+Unauthorized: /datahub/services/
+[26/Mar/2025 14:15:25] "GET /datahub/services/ HTTP/1.1" 401 27
+[26/Mar/2025 14:15:25] "OPTIONS /datahub/companies/?page=1&search= HTTP/1.1" 200 0
+Unauthorized: /datahub/companies/
+[26/Mar/2025 14:15:25] "GET /datahub/companies/?page=1&search= HTTP/1.1" 401 27
+[26/Mar/2025 14:15:33] "OPTIONS /datahub/services/ HTTP/1.1" 200 0
+Unauthorized: /datahub/services/
+[26/Mar/2025 14:15:33] "GET /datahub/services/ HTTP/1.1" 401 27
+[26/Mar/2025 14:15:33] "OPTIONS /datahub/companies/?page=1&search= HTTP/1.1" 200 0
+Unauthorized: /datahub/companies/
+[26/Mar/2025 14:15:33] "GET /datahub/companies/?page=1&search= HTTP/1.1" 401 27
+[26/Mar/2025 14:15:39] "OPTIONS /users/logout/ HTTP/1.1" 200 0
+Unauthorized: /users/logout/
+[26/Mar/2025 14:15:39] "POST /users/logout/ HTTP/1.1" 401 27
+[26/Mar/2025 14:15:53] "OPTIONS /users/logout/ HTTP/1.1" 200 0
+Unauthorized: /users/logout/
+[26/Mar/2025 14:15:53] "POST /users/logout/ HTTP/1.1" 401 27
+[26/Mar/2025 14:16:42] "OPTIONS /users/logout/ HTTP/1.1" 200 0
+Unauthorized: /users/logout/
+[26/Mar/2025 14:16:42] "POST /users/logout/ HTTP/1.1" 401 27
+Starting migrations...
+/usr/local/lib/python3.11/site-packages/django/core/management/commands/makemigrations.py:160: RuntimeWarning: Got an error checking a consistent migration history performed for database connection 'default': could not translate host name "db" to address: Name or service not known
+
+  warnings.warn(
+No changes detected
+Applying migrations...
+Operations to perform:
+  Apply all migrations: account, admin, auth, authtoken, contenttypes, datahub, django_celery_beat, engage, messaging, sessions, socialaccount, users
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying account.0001_initial... OK
+  Applying account.0002_email_max_length... OK
+  Applying account.0003_alter_emailaddress_create_unique_verified_email... OK
+  Applying account.0004_alter_emailaddress_drop_unique_email... OK
+  Applying account.0005_emailaddress_idx_upper_email... OK
+  Applying account.0006_emailaddress_lower... OK
+  Applying account.0007_emailaddress_idx_email... OK
+  Applying account.0008_emailaddress_unique_primary_email_fixup... OK
+  Applying account.0009_emailaddress_unique_primary_email... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying authtoken.0001_initial... OK
+  Applying authtoken.0002_auto_20160226_1747... OK
+  Applying authtoken.0003_tokenproxy... OK
+  Applying authtoken.0004_alter_tokenproxy_options... OK
+  Applying datahub.0001_initial... OK
+  Applying datahub.0002_remove_mxrecord_mail_server_remove_mxrecord_priority_and_more... OK
+  Applying datahub.0003_alter_company_options_remove_company_domain_and_more... OK
+  Applying datahub.0004_alter_domain_company... OK
+  Applying datahub.0005_domain_last_checked... OK
+  Applying datahub.0006_service... OK
+  Applying datahub.0007_domain_services... OK
+  Applying datahub.0008_servicepattern... OK
+  Applying datahub.0009_contact_linkedin_profile... OK
+  Applying datahub.0010_company_created_at_company_owner_company_visibility_and_more... OK
+  Applying datahub.0011_remove_company_owner_remove_contact_owner_and_more... OK
+  Applying datahub.0012_contact_lusha_contact_id_alter_contact_email_address_and_more... OK
+  Applying django_celery_beat.0001_initial... OK
+  Applying django_celery_beat.0002_auto_20161118_0346... OK
+  Applying django_celery_beat.0003_auto_20161209_0049... OK
+  Applying django_celery_beat.0004_auto_20170221_0000... OK
+  Applying django_celery_beat.0005_add_solarschedule_events_choices... OK
+  Applying django_celery_beat.0006_auto_20180322_0932... OK
+  Applying django_celery_beat.0007_auto_20180521_0826... OK
+  Applying django_celery_beat.0008_auto_20180914_1922... OK
+  Applying django_celery_beat.0006_auto_20180210_1226... OK
+  Applying django_celery_beat.0006_periodictask_priority... OK
+  Applying django_celery_beat.0009_periodictask_headers... OK
+  Applying django_celery_beat.0010_auto_20190429_0326... OK
+  Applying django_celery_beat.0011_auto_20190508_0153... OK
+  Applying django_celery_beat.0012_periodictask_expire_seconds... OK
+  Applying django_celery_beat.0013_auto_20200609_0727... OK
+  Applying django_celery_beat.0014_remove_clockedschedule_enabled... OK
+  Applying django_celery_beat.0015_edit_solarschedule_events_choices... OK
+  Applying django_celery_beat.0016_alter_crontabschedule_timezone... OK
+  Applying django_celery_beat.0017_alter_crontabschedule_month_of_year... OK
+  Applying django_celery_beat.0018_improve_crontab_helptext... OK
+  Applying django_celery_beat.0019_alter_periodictasks_options... OK
+  Applying users.0001_initial... OK
+  Applying users.0002_remove_userprofile_location... OK
+  Applying users.0003_alter_userprofile_profile_picture... OK
+  Applying users.0004_alter_userprofile_profile_picture... OK
+  Applying users.0005_company_userprofile_company... OK
+  Applying users.0006_rename_company_usercompany_alter_usercompany_options... OK
+  Applying users.0007_userprofile_personal_companies_and_more... OK
+  Applying engage.0001_initial... OK
+  Applying engage.0002_rename_body_campaignmessage_template... OK
+  Applying engage.0003_waapiinstance... OK
+  Applying users.0008_userprofile_mobile_phone_userprofile_waapi_instance... OK
+  Applying users.0009_remove_userprofile_waapi_instance... OK
+  Applying engage.0004_remove_waapiinstance_user_waapiinstance_user_profile... OK
+  Applying engage.0005_synthesiavideo... OK
+  Applying engage.0006_alter_synthesiavideo_status... OK
+  Applying engage.0007_remove_synthesiavideo_webhook_url_and_more... OK
+  Applying engage.0008_synthesiavideo_encrypted_download_url_and_more... OK
+  Applying messaging.0001_initial... OK
+  Applying messaging.0002_message_is_system_message_alter_message_sender... OK
+  Applying messaging.0003_message_actions_message_message_type... OK
+  Applying sessions.0001_initial... OK
+  Applying socialaccount.0001_initial... OK
+  Applying socialaccount.0002_token_max_lengths... OK
+  Applying socialaccount.0003_extra_data_default_dict... OK
+  Applying socialaccount.0004_app_provider_id_settings... OK
+  Applying socialaccount.0005_socialtoken_nullable_app... OK
+  Applying socialaccount.0006_alter_socialaccount_extra_data... OK
+Starting server...
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+March 26, 2025 - 14:25:46
+Django version 5.1, using settings 'core.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+[26/Mar/2025 14:28:21] "OPTIONS /users/logout/ HTTP/1.1" 200 0
+[26/Mar/2025 14:28:21] "POST /users/logout/ HTTP/1.1" 200 30
+[26/Mar/2025 14:28:31] "POST /admin/login/?next=/admin/auth/user/ HTTP/1.1" 200 4347
+[26/Mar/2025 14:28:31] "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[26/Mar/2025 14:28:31] "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[26/Mar/2025 14:28:31] "GET /static/admin/css/login.css HTTP/1.1" 304 0
+[26/Mar/2025 14:28:31] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[26/Mar/2025 14:28:31] "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[26/Mar/2025 14:28:31] "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[26/Mar/2025 14:28:31] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[26/Mar/2025 14:28:35] "POST /admin/login/?next=/admin/auth/user/ HTTP/1.1" 200 4347
+[26/Mar/2025 14:29:22] "POST /admin/login/?next=/admin/auth/user/ HTTP/1.1" 200 4347
+[26/Mar/2025 14:29:26] "GET /admin/login/ HTTP/1.1" 200 4150
+[26/Mar/2025 14:29:32] "POST /admin/login/ HTTP/1.1" 200 4314
+[26/Mar/2025 14:29:34] "GET /admin/login/ HTTP/1.1" 200 4150
+[26/Mar/2025 14:32:51] "POST /admin/login/ HTTP/1.1" 302 0
+[26/Mar/2025 14:32:51] "GET /admin/ HTTP/1.1" 200 27204
+[26/Mar/2025 14:32:51] "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+[26/Mar/2025 14:32:51] "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+[26/Mar/2025 14:32:51] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[26/Mar/2025 14:32:51] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /admin/datahub/company/ HTTP/1.1" 200 58627
+[26/Mar/2025 14:33:01] "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[26/Mar/2025 14:33:01] "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+[26/Mar/2025 14:33:01] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0

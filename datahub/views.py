@@ -198,6 +198,11 @@ class LushaContactSearchView(APIView):
                     )
 
                     # Save or update contact details
+                    # Clean last name by removing job title if present
+                    if '-' in last_name:
+                        last_name = last_name.split('-')[0].strip()
+                    
+
                     contact_obj, created = Contact.objects.update_or_create(
                         first_name=first_name,
                         last_name=last_name,

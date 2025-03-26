@@ -1,0 +1,32 @@
+
+services:
+  db:
+    image: postgres
+    restart: on-failure:10
+    env_file: .env
+    ports:
+      - "5433:5432"
+    networks:
+      - api-network
+    volumes:
+      - "postgres-db-volume-ms:/var/lib/postgresql/data"
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+  api:
+    build: .
+    command: sh entrypoint.sh
+    env_file: .env
+    volumes:
+      - .:/app
+    networks:
+      - api-network
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  postgres-db-volume-ms:
+
+networks:
+  api-network:
+    driver: bridge

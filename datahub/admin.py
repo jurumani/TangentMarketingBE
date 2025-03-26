@@ -12,6 +12,7 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     search_fields = ['name', 'address']
+    list_filter = ['created_at', 'owners__username']  # Optional: Adds a filter in the admin panel
     list_display = ['name', 'address']
 
 @admin.register(Domain)
