@@ -28,22 +28,25 @@ WAAPI_INSTANCE_ID = os.getenv('WAAPI_INSTANCE_ID')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False')
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
-ALLOWED_HOSTS = ['c5ea-169-0-26-81.ngrok-free.app', '127.0.0.1', '192.168.8.213', '7f2c-165-0-142-182.ngrok-free.app']
+ALLOWED_HOSTS = ['*']
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:8100')  # Replace this with your Vue app's URL
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://localhost:8100', 'http://localhost',  # Default Ionic serve port
-    'https://7f2c-165-0-142-182.ngrok-free.app'
-]
-
+# Strict CORS configuration
+# In Django settings.py
+CORS_ALLOWED_ORIGINS = ['http://localhost', 'http://localhost:80']
 CORS_ALLOW_CREDENTIALS = True
-
 CORS_ALLOW_HEADERS = list(default_headers) + [
-    'visibility',  # Add the custom header here
-    'source',
-    'type',
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
+
 
 SITE_ID = 1
 
@@ -113,6 +116,7 @@ TEMPLATES = [
         },
     },
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
@@ -210,12 +214,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 SITE_NAME = 'Boilerplate'  # Name of your site for the email subject
 
+# Redis settings
+REDIS_HOST = os.environ.get('REDIS_HOST', 'redis')  # Use 'redis' container hostname
+REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
+REDIS_DB = os.environ.get('REDIS_DB', '0')
+
 # Celery settings
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis as message broker
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}')  # Redis as message broker
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND', f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}')  # Redis to store task results
 CELERY_ACCEPT_CONTENT = ['json']  # Celery will accept content in JSON
 CELERY_TASK_SERIALIZER = 'json'  # Serializer format for tasks
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # Redis to store task results
-CELERY_CACHE_BACKEND = 'default'
+CELERY_TIMEZONE = TIME_ZONE
 
 # Celery Beat Settings
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'

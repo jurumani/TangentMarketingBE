@@ -1,4 +1,4 @@
-
+version: '3.8'
 services:
   db:
     image: postgres
@@ -7,26 +7,65 @@ services:
     ports:
       - "5433:5432"
     networks:
-      - api-network
+      - shared-api-network
     volumes:
       - "postgres-db-volume-ms:/var/lib/postgresql/data"
       - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+  
+  redis:
+    image: redis:alpine
+    restart: always
+    networks:
+      - shared-api-network
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+  
   api:
     build: .
     command: sh entrypoint.sh
     env_file: .env
+    hostname: api
     volumes:
       - .:/app
     networks:
-      - api-network
+      - shared-api-network
     ports:
       - "8000:8000"
     depends_on:
       - db
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+  
+  celery:
+    build:
+      context: .
+      dockerfile: celery.Dockerfile
+    volumes:
+      - .:/app
+    env_file: .env
+    networks:
+      - shared-api-network
+    depends_on:
+      - db
+      - redis
+      - api
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
 
 volumes:
   postgres-db-volume-ms:
+  redis-data:
 
 networks:
-  api-network:
-    driver: bridge
+  shared-api-network:
+    external: true
+    name: shared-api-network
