@@ -19,8 +19,5 @@ COPY . /app/
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-COPY start_celery.sh /app/
-RUN chmod +x /app/start_celery.sh
-
 # Use entrypoint
 ENTRYPOINT ["sh", "./entrypoint.sh"]

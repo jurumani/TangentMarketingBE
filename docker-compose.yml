@@ -22,11 +22,11 @@ services:
     volumes:
       - redis-data:/data
   
-  api:
+  tangentmarketingbackend:
     build: .
     command: sh entrypoint.sh
     env_file: .env
-    hostname: api
+    hostname: backend
     volumes:
       - .:/app
     networks:
@@ -54,7 +54,7 @@ services:
     depends_on:
       - db
       - redis
-      - api
+      - tangentmarketingbackend
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
